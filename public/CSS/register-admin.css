@@ -1,0 +1,15 @@
+.section-register-admin{
+    height: 100vh;
+
+}
+
+.section-register-admin .container{
+    width: 50%;
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+
+    border: solid 3px rgb(74, 83, 118);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

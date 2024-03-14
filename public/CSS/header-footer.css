@@ -1,0 +1,219 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+.main-home{
+    width: 100%;
+    height: 100vh;
+    background-image: url(/Images/Layouts/KCLYNE-Banner.png);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+header{
+    background-color: rgb(74, 83, 118);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+
+.logo img{
+    max-width: 80px;
+    height: auto;
+}
+
+.navmenu{
+    display: flex;
+}
+
+.navmenu a{
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+
+/* SEARCH */
+
+.search {
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+}
+
+.search input[type="text"] {
+    max-height: 22px;
+    padding: 3px;
+    text-align: center;
+    font-size: 13px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+}
+
+.search i{
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.logout-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.navmenu a:hover{
+    color: rgb(232, 113, 33);
+    font-size: 17px;
+}
+
+.nav-icon{
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon i{
+    margin-right: 20px;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    transition: all 0s ease;
+}
+
+.nav-icon i:hover{
+    transform: scale(1.1, .2s);
+    color: rgb(232, 113, 33);
+}
+
+#menu-icon{
+    font-size: 35px;
+    color: #ffffff;
+    z-index: 10001;
+    cursor: pointer;
+}
+
+section{
+    padding: 5% 10%;
+}
+
+
+.main-text{
+    color: rgb(74, 83, 118);
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.main-text h1{
+    color: rgb(232, 113, 33);
+    font-size: 65px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 10px;
+}
+
+.main-text p{
+    color: #333c56;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.main-btn{
+    display: inline-block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 2px solid #111;
+    padding: 12px 25px;
+    transition: all .5s ease;
+}
+
+.main-btn:hover{
+    background-color: rgb(74, 83, 118);
+    color: #fff;
+    border: 2px solid rgb(74, 83, 118);
+    transition: all .1s ease;
+}
+
+.main-btn i{
+    vertical-align: middle;
+}
+
+header.sticky{
+    background-color: rgb(74, 83, 118);
+    padding: 20px 10%;
+    box-shadow: 0px 0px 0px 10px rgb(0 0 0 / 10%);
+}
+
+/* contact-section */
+
+.contact{
+    background-color: rgb(228, 172, 135);
+}
+
+.contact-info{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+}
+
+.first-info img{
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.contact-info h4{
+    color: rgb(232, 113, 33);
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contact-info p{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.social-icon{
+    text-align: center;
+    font-size: 20px;
+}
+
+.social-icon a{
+    padding: 5px 15px;
+    color: rgb(232, 113, 33);
+}
+
+.social-icon a:hover{
+    font-size: 21px;
+}
