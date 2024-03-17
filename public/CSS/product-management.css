@@ -1,0 +1,12 @@
+.product-management {
+    display: flex;
+    justify-content: space-between; /* To create two columns */
+    align-items: flex-start; /* Align items at the top of the section */
+}
+
+.create-product,
+.show-product {
+    width: calc(50% - 10px); /* Set width for each part */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in width calculation */
+}

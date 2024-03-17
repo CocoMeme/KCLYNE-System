@@ -13,45 +13,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="{{ asset('css/header-footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/register-admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin-forms.css') }}" rel="stylesheet">
     <link href="{{ asset('css/message.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/product-management.css') }}" rel="stylesheet">
 
 </head>
 
 <header>
     {{-- FOR ADMIN --}}
-    {{-- @auth('admin')
+    @auth('admin')
 
         <div class="sidebar">
 
             <div class="logo">
-                <img src="layouts/SPark-logo.png" alt="Logo">
+                <img src="Images/Layouts/KCLYNE-Logo.png" alt="Logo">
             </div>
 
             <div class="menu-items">
                 <ul>
-                    <li><a href="/"><i class='bx bx-home'></i> <span>Home</span></a></li>
-                    <li><a href="/slots-control-admin"><i class='bx bx-calendar'></i> <span>Slot Control</span></a></li>
-                    <li><a href="/user-management"><i class='bx bx-user'></i> <span>User Management</span></a></li>
-                    <li><a href="/paymentManagement"><i class='bx bx-wallet'></i> <span>Payment Management</span></a></li>
-                    <li><a href="/history-admin"><i class='bx bx-book'></i> <span>Rental Record</span></a></li>
-                    <li><a href="/summary"><i class='bx bx-bar-chart'></i> <span>Summary Report</span></a></li>
+                    <li><a href="/"><i class='bx bx-home'></i> <span>Dashboard</span></a></li>
+                    <li><a href="/product-management"><i class='bx bxs-grid' ></i><span>Product Management</span></a></li>
+                    <li><a href="/"><i class='bx bx-user'></i> <span>Customer Management</span></a></li>
+                    <li><a href="/"><i class='bx bx-wallet'></i> <span>Payroll</span></a></li>
+                    <li><a href="/"><i class='bx bx-book'></i> <span>Order History</span></a></li>
+                    <li><a href="/"><i class='bx bx-bar-chart'></i> <span>N/A</span></a></li>
                 </ul>
             </div>
 
             <div class="logout-button">
-                <form action="/logout-admin" method="POST">
+                <form action="/" method="POST">
                     @csrf
                     <button type="submit"><i class='bx bx-log-out-circle'></i></button>
                 </form>
             </div>
 
         </div>
-     --}}
-        
 
     {{-- FOR CUSTOMER --}}
-    {{-- @else --}}
+    @else
+
         @auth
             <a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
             <ul class="navmenu">
@@ -99,6 +101,8 @@
                 <a href="login"><i class='bx bx-log-in-circle'></i></a>
             </div>
         @endauth
-    {{-- @endauth --}}
+
+    @endauth
+
 </header>
 

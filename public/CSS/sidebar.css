@@ -1,0 +1,146 @@
+/* SIDEBAR CSS */
+
+.sidebar {
+    height: 100%;
+    width: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(74, 83, 118);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Apply space between the three divs */
+    padding-top: 20px;
+    padding: 20px;
+    transition: width 0.3s;
+}
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar i{
+    font-size: 15px;
+}
+
+.sidebar ul li {
+    padding: 8px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex; /* Display icon and text side by side */
+    align-items: center; /* Align items vertically */
+}
+
+.sidebar ul li a i {
+    margin-right: 5px; /* Add some spacing between icon and text */
+}
+
+.sidebar ul li:hover {
+    background-color: rgb(84, 90, 116);
+}
+
+.sidebar ul li span {
+    display: none;
+    transition: opacity 0.9s ease;
+}
+
+.sidebar:hover ul li span {
+    display: inline;
+}
+
+.sidebar .logo{
+    height: 200px;
+    flex: 0 0 auto; /* Allow logo to grow and shrink, but not basis */
+}
+
+.sidebar .logo img {
+    display: block;
+    width: 25px;
+    margin: 0 auto;
+    margin-top: 50px;
+    transition: all 0.3s linear;
+}
+
+.sidebar:hover .logo img {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.sidebar .menu-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .menu-items ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar .menu-items ul li a {
+    color: #fff; /* Menu item text color */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .menu-items ul li a:hover {
+    color: #fff; /* Menu item text color on hover */
+}
+
+.sidebar .menu-items ul li a i {
+    display: none;
+}
+
+.sidebar .logout-button form {
+    margin-top: auto;
+}
+
+.sidebar .logout-button button {
+    color: #fff; /* Logout button text color */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .logout-button button i {
+    display: none; /* Hide logout icon by default */
+}
+
+.sidebar:not(:hover) .menu-items ul li a i,
+.sidebar:not(:hover) .logout-button button i {
+    display: inline-block; /* Display icons when not hovered */
+    margin-right: 10px; /* Adjust spacing between icon and text */
+}
+
+.sidebar:hover .logo img {
+    padding-top: 50px;
+    content: url('/Images/Layouts/KCLYNE-Logo.png'); /* Change logo image on hover */
+}
+
+.sidebar:hover .menu-items ul li a i,
+.sidebar:hover .logout-button button i {
+    display: inline-block; /* Display icons on hover */
+    margin-right: 10px; /* Adjust spacing between icon and text */
+}
+
+.menu-items {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Apply space-between to distribute items */
+    align-items: center;
+    transition: opacity 0.3s ease; /* Add transition for opacity */
+}
