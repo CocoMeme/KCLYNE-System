@@ -59,22 +59,24 @@
             <ul class="navmenu">
                 <li><a href="/">Home</a></li>|
                 <li><a href="/">Shop</a></li>|
-                <li><a href="/">Payment Form</a></li>|
                 <li><a href="/">About Us</a></li>
             </ul>
 
             <div class="nav-icon">
-                <a href="/notifications">
+                <a href="">
+                    <i class='bx bx-cart-alt'> Cart </i>
+                </a>
+                <a href="/">
                     <i class='bx bx-bell'></i>
                 </a>
-                <form action="/userprofile" method="GET">
+                <form action="/" method="GET">
                     @csrf
                     <button class="userporfile" type="submit">
                         <i class='bx bxs-user-circle'></i>
                     </button>
                 </form>
 
-                <form action="/logout" method="POST">
+                <form action="/" method="POST">
                     @csrf
                     <button class="logout-button" type="submit">
                         <i class='bx bx-log-out-circle'></i>
@@ -89,6 +91,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/">Shop</a></li>
                 <li><a href="/">About Us</a></li>
+                <li><a href="/admin/login">Administration</a></li>
             </ul>
 
             <div class="search">

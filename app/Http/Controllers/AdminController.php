@@ -18,15 +18,15 @@ class AdminController extends Controller
                 'username' => 'required|string|max:255|unique:admins',
                 'password' => 'required|string|min:8|confirmed',
             ]);
-
+        
             Admin::create([
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
             ]);
-
+        
             return redirect()->route('loginAdmin')->with('success', 'Admin registered successfully! Please log in.');
         }
-
+    
         public function loginAdmin(Request $request)
         {
 

@@ -44,8 +44,8 @@ header{
 
 .search {
     display: flex;
-    justify-content: center; /* Horizontally center content */
-    align-items: center; /* Vertically center content */
+    justify-content: center;
+    align-items: center;
 }
 
 .search input[type="text"] {
@@ -53,7 +53,7 @@ header{
     padding: 3px;
     text-align: center;
     margin-right: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     border: none;
     border-radius: 3px;
 }

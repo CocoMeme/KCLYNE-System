@@ -1,14 +1,160 @@
-.section-register-admin{
-    height: 100vh;
+/* REGISTER PAGE */
+
+.register-page {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
 }
 
-.section-register-admin .container{
-    width: 50%;
+.form-register-page {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-
-    border: solid 3px rgb(74, 83, 118);
+    padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgb(74, 83, 118);
+    background-color: #fff;
+    text-align: center;
+    width: 500px;
+    position: relative;
+}
+
+.form-register-page p{
+    font-size: 14px;
+}
+
+.form-register-page a{
+    font-weight: 1000;
+    color: rgb(194, 156, 156);
+}
+
+.register-page h2{
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0; /* Reset margin */
+    margin-bottom: 20px;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgb(74, 83, 118);
+}
+
+.form-register-page input{
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin: 8px 0;
+    background: #eee;
+    border-radius: 3px;
+    border-top: 2px solid rgb(194, 156, 156);
+    border-left: 2px solid rgb(194, 156, 156);
+    border-right: 1px solid rgb(194, 156, 156);
+    border-bottom: 1px solid rgb(194, 156, 156);
+}
+
+.form-register-page button{
+    display: inline-block;
+    width: 300px;
+    margin: 5%;
+    padding: 3% 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background: rgb(194, 156, 156);
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease;
+}
+
+.form-register-page button:hover{
+    background: rgb(74, 83, 118);
+}
+
+
+/* LOGIN PAGE */
+
+.login-page {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.form-login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgb(74, 83, 118);
+    background-color: #fff;
+    text-align: center;
+    width: 500px;
+    position: relative;
+}
+
+.form-login-page p{
+    font-size: 14px;
+}
+
+.form-register-page a{
+    font-weight: 1000;
+    color: rgb(194, 156, 156);
+}
+
+.login-page h2{
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0; /* Reset margin */
+    margin-bottom: 20px;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgb(74, 83, 118);
+}
+
+.form-login-page input{
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin: 8px 0;
+    background: #eee;
+    border-radius: 3px;
+    border-top: 2px solid rgb(194, 156, 156);
+    border-left: 2px solid rgb(194, 156, 156);
+    border-right: 1px solid rgb(194, 156, 156);
+    border-bottom: 1px solid rgb(194, 156, 156);
+}
+
+.form-login-page button{
+    display: inline-block;
+    width: 300px;
+    margin: 5%;
+    padding: 3% 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background: rgb(194, 156, 156);
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease;
+}
+
+.form-login-page button:hover{
+    background: rgb(74, 83, 118);
 }

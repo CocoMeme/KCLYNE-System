@@ -45,4 +45,6 @@ class ProductController extends Controller
         // Redirect back or wherever you want after product creation
         return redirect()->back()->with('success', 'Product created successfully!');
     }
+
+    
 }

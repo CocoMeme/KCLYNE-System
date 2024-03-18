@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('supplier_price');
             $table->integer('seller_retail_price');
-            $table->string('category')->nullable();
+            $table->enum('category', ['Oil','Spair Part', 'Tires & Wheels'])->nullable();
             $table->string('product_image')->nullable();
             $table->timestamps();
         });
