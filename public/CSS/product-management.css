@@ -102,6 +102,15 @@
     transition: all 1s ease;
 }
 
+.group{
+    justify-content: center;
+    align-items:last baseline;
+}
+
+.group label{
+
+}
+
 /* EFFECTS */
 
 .form-create-product input:hover, 

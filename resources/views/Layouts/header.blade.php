@@ -28,7 +28,7 @@
         <div class="sidebar">
 
             <div class="logo">
-                <img src="Images/Layouts/KCLYNE-Logo.png" alt="Logo">
+                <img src="/Images/Layouts/KCLYNE-Logo.png" alt="Logo">
             </div>
 
             <div class="menu-items">

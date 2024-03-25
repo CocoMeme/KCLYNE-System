@@ -2,18 +2,43 @@
 
 <body>
 
+    @auth('admin') 
     <section class="product-management">
 
             <div class="create-product">
                 <form class="form-create-product" action="{{ route('product.create') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <h2 style="text-align: center;">Create Product</h2>
-                <input name="name" type="text" placeholder="Product Name">
-                <input name="price" type="integer" placeholder="Price">
-                <input name="seller_price" type="integer" placeholder="Seller Price">
-                <input name="stock" type="integer" placeholder="Stock">
-                <textarea name="description" placeholder="Product Description" cols="30" rows="10"></textarea>
-                <input type="file" name="image" id="image">
+                <div class="group">
+                    {{-- <label for="">Product Name:</label> --}}
+                    <input name="name" type="text" placeholder="Enter the product name">
+                </div>
+
+                <div class="group">
+                    {{-- <label for="">Price:</label> --}}
+                    <input name="price" type="integer" placeholder="Enter the price">
+                </div>
+
+                <div class="group">
+                    {{-- <label for="">Seller Price:</label> --}}
+                    <input name="seller_price" type="integer" placeholder="Enter the seller Price">
+                </div>
+
+                <div class="group">
+                    {{-- <label for="">Stock:</label> --}}
+                    <input name="stock" type="integer" placeholder="Enter the stock">
+                </div>
+
+                <div class="group">
+                    {{-- <label for="">Description:</label> --}}
+                    <textarea name="description" placeholder="Enter the product Description" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="group">
+                    {{-- <label for="">Insert Image:</label> --}}
+                    <input type="file" name="image" id="image">
+                </div>
+
                 <button>Create</button>
                 </form>
             </div>
@@ -64,6 +89,11 @@
                 @endforeach     --}}
             </div>
         </div>
+
+        @else  
+
+        @endauth
+
             
     </section>
 </body>

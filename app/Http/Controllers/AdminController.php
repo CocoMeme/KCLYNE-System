@@ -15,8 +15,8 @@ class AdminController extends Controller
         public function registerAdmin(Request $request)
         {
             $request->validate([
-                'username' => 'required|string|max:255|unique:admins',
-                'password' => 'required|string|min:8|confirmed',
+                'username' => 'required|string|max:30',
+                'password' => 'required|string|min:8|max:30|confirmed',
             ]);
         
             Admin::create([
@@ -24,7 +24,7 @@ class AdminController extends Controller
                 'password' => Hash::make($request->password),
             ]);
         
-            return redirect()->route('loginAdmin')->with('success', 'Admin registered successfully! Please log in.');
+            return redirect()->route('admin.login')->with('success', 'Admin registered successfully! Please log in.');
         }
     
         public function loginAdmin(Request $request)
