@@ -14,10 +14,12 @@
 
     <link href="{{ asset('css/header-footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin-forms.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/customer-forms.css') }}" rel="stylesheet">
     <link href="{{ asset('css/message.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/product-management.css') }}" rel="stylesheet">
+
 
 </head>
 
@@ -100,7 +102,7 @@
             </div>
 
             <div class="nav-icon">
-                <a href="register"><i class='bx bx-user-plus'></i></a>
+                <a href="/register"><i class='bx bx-user-plus'></i></a>
                 <a href="login"><i class='bx bx-log-in-circle'></i></a>
             </div>
         @endauth

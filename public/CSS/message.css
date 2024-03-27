@@ -20,3 +20,25 @@
     0% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+/* ADMIN =======================================  */
+
+.admin-login-error p{
+    font-size: 14px;
+    padding: 5px;
+    background-color: red;
+    color: #fff;
+    width: 300px;
+}
+
+.form-login-page span{
+    font-size: 14px;
+    padding: 5px;
+    background-color: red;
+    color: #fff;
+    width: 300px;
+}
+
+
+/* CREATING PRODUCT ============================= */
+

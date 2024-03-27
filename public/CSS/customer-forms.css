@@ -1,0 +1,32 @@
+.customer-register {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.register {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 400px; /* Optionally, set a maximum width */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.register .form-group label{
+    width: 100px;
+}
+
+.form-customer-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgb(74, 83, 118);
+    background-color: #fff;
+    text-align: center;
+    width: 700px;
+}

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
 
@@ -46,3 +47,7 @@ use App\Http\Controllers\ProductController;
 
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
+
+        // Register
+        Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
+        Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
