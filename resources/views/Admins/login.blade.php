@@ -2,7 +2,7 @@
 
 <body>
 
-    <section class="user-login-page">
+    <section class="section-admin-login">
         <div class="login-page">
             <form class="form-login-page" action="{{ route('admin.login.submit') }}" method="POST">
                 @csrf

@@ -37,6 +37,10 @@ use App\Http\Controllers\CustomerController;
 
         Route::post('/admin/login', [AdminController::class, 'loginAdmin'])->name('admin.login.submit');
 
+    // Logout
+
+        Route::post('/admin/logout', [AdminController::class, 'logoutAdmin'])->name('admin.logout.submit');
+
     
     //  PRODUCTS RELATED ADMIN
 
@@ -51,3 +55,6 @@ use App\Http\Controllers\CustomerController;
         // Register
         Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
         Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
+
+
+// EMPLOYEES

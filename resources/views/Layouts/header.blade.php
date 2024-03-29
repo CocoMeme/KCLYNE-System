@@ -45,7 +45,7 @@
             </div>
 
             <div class="logout-button">
-                <form action="/" method="POST">
+                <form action="{{ route('admin.logout.submit') }}" method="POST">
                     @csrf
                     <button type="submit"><i class='bx bx-log-out-circle'></i></button>
                 </form>

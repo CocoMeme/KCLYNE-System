@@ -43,6 +43,13 @@ class AdminController extends Controller
 
         }
 
+        public function logoutAdmin()
+        {
+            Auth::guard('admin')->logout();
+
+            return redirect()->route('admin.login.submit')->with('success', 'You have been logged out.');
+        }
+
 
 
 }
