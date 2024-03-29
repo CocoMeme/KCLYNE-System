@@ -13,12 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="{{ asset('css/header-footer.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/admin-forms.css') }}" rel="stylesheet">
     <link href="{{ asset('css/customer-forms.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/message.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/product-management.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/product-display.css') }}" rel="stylesheet">
 
 
 </head>

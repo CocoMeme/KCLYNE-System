@@ -5,16 +5,21 @@
     height: 100vh;
     justify-content: space-between; /* To create two columns */
     align-items: flex-start; /* Align items at the top of the section */
+    padding: 5% 5% 5% 10%;
 }
 
-.create-product,
+.create-product{
+    width: calc(35% - 5px); /* Set width for each part */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
 .show-product {
-    width: calc(50% - 5px); /* Set width for each part */
+    width: calc(70% - 5px); /* Set width for each part */
     padding: 20px; /* Add padding for spacing */
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
-/* PRODUCT CREATE ////////////////////////////////////////// */
+/* PRODUCT CREATE SECTION ////////////////////////////////////////// */
 
 .create-product {
     display: flex;
@@ -125,7 +130,7 @@
 
 .group label{
     text-align: right;
-    width: 100px;
+    width: 120px;
     margin-right: 20px
 }
 
@@ -143,32 +148,5 @@
     background-color: rgb(74, 83, 118);
 }
 
+/* SHOW PRODUCT SECTION */
 
-
-/* DISPLAY PRODUCT ///////////////////////////////////////// */
-
-.product {
-    display: flex;
-}
-
-.row {
-    width: 150px;
-    height: auto;
-    border: 3px solid rgb(194, 156, 156);
-}
-
-.row img {
-    width: 120px;
-    height: auto;
-    display: block; /* Ensures the image behaves like a block element */
-    margin: 0 auto; /* Centers the image horizontally */
-}
-
-.row h3 {
-    width: 100%;
-    font-size: 15px;
-    padding: 7px;
-    text-align: center;
-    background-color: rgb(194, 156, 156);
-    color: #fff;
-}

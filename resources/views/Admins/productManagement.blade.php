@@ -79,21 +79,42 @@
 
         <div class="show-product">
             <h2 style="text-align: center;">All Products</h2>
+
             <div class="products">
-                @foreach($products as $product)
+
+            @foreach($products as $product)
                 <div class="row">
-                    @php
-                    // Split the product_image string into an array of image names
-                    $images = explode('|', $product->product_image);
-                    @endphp
-                    @if(count($images) > 0)
-                    <img src="{{ asset('Images/Products/' . $images[0]) }}" alt="Product Image" style="max-width: 100px;">
-                    @endif
                     <h3>{{ $product->product_name }}</h3>
+                    
+                    @php
+                        $imagesExist = false;
+                        $images = explode('|', $product->product_image);
+                    @endphp
+                    
+                    @if(count($images) > 0)
+                        @foreach ($images as $image)
+                            @if(file_exists(public_path('Images/Products/' . $image)))
+                                <img src="{{ asset('Images/Products/' . $image) }}" alt="Product Image" width="100px">
+                                @php $imagesExist = true; @endphp
+                                @break
+                            @endif
+                        @endforeach
+                    @endif
+                    
+                    @if(!$imagesExist)
+                        <img src="{{ asset('Images/Products/no_product_image.jpg') }}" alt="No Product Image" width="100px">
+                    @endif
+            
                     <p>{{ $product->seller_retail_price }}</p>
+                    <p>{{ $product->description }}</p>
                 </div>
-                @endforeach
+            @endforeach
+            
+                
+                
+
             </div>
+
         </div>
         
 
