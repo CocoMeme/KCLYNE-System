@@ -7,61 +7,62 @@
 
         {{-- PRODUCT CREATE --}}
         <div class="create-product">
-            <form class="form-create-product" action="{{ route('product.create') }}" method="post" enctype="multipart/form-data">
+            <form class="form-create-product" action="{{ route('product.update', ['id' => $product->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <h2 style="text-align: center;">Product Information</h2>
                 <div class="group">
                     <label for="product_name">Product Name:</label>
-                    <input name="product_name" type="text" placeholder="Enter the product name" required>
+                    <input name="product_name" type="text" placeholder="Enter the product name" value="{{ $product->product_name }}" required>
+                    @error('product_name')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </div>
-                @error('product_name')
-                    <span class="error">{{ $message }}</span>
-                @enderror
-
+            
                 <div class="group">
                     <label for="description">Description:</label>
-                    <textarea name="description" placeholder="Enter the product Description" cols="30" rows="10" required></textarea>
+                    <textarea name="description" placeholder="Enter the product Description" cols="30" rows="10" required>{{ $product->description }}</textarea>
                     @error('description')
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-        
+            
                 <div class="group">
                     <label for="supplier_price">Supplier Price:</label>
-                    <input name="supplier_price" type="number" placeholder="Enter the supplier price" required>
+                    <input name="supplier_price" type="number" placeholder="Enter the supplier price" value="{{ $product->supplier_price }}" required>
                     @error('supplier_price')
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-        
+            
                 <div class="group">
                     <label for="seller_retail_price">Seller Retail Price:</label>
-                    <input name="seller_retail_price" type="number" placeholder="Enter the seller retail price" required>
+                    <input name="seller_retail_price" type="number" placeholder="Enter the seller retail price" value="{{ $product->seller_retail_price }}" required>
                     @error('seller_retail_price')
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-        
+            
                 <div class="group">
                     <label for="category">Category:</label>
                     <select name="category" required>
-                        <option value="Oil">Oil</option>
-                        <option value="Spare Part">Spare Part</option>
-                        <option value="Tires & Wheels">Tires & Wheels</option>
+                        <option value="Oil" {{ $product->category == 'Oil' ? 'selected' : '' }}>Oil</option>
+                        <option value="Spair Part" {{ $product->category == 'Spair Part' ? 'selected' : '' }}>Spair Part</option>
+                        <option value="Tires & Wheels" {{ $product->category == 'Tires & Wheels' ? 'selected' : '' }}>Tires & Wheels</option>
                     </select>
                     @error('category')
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-        
+            
                 <div class="group">
                     <label for="stock">Stock:</label>
-                    <input name="stock" type="number" placeholder="Enter the stock" required>
+                    <input name="stock" type="number" placeholder="Enter the stock" value="{{ $product->stock }}" required>
                     @error('stock')
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-        
+            
                 <div class="group">
                     <label for="Image">Insert Image:</label>
                     <input type="file" name="images[]" id="images" multiple>
@@ -69,14 +70,14 @@
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
-        
-                <button name="create" type="submit">Create</button>
+            
+                <button name="update" type="submit">Update</button> <!-- Change button text to "Update" -->
             </form>
         </div>
         
         {{-- PRODUTC DISPLAY --}}
         <div class="show-product">
-            <h2 style="text-align: center;">All Products</h2>
+            {{-- <h2 style="text-align: center;">All Products</h2>
 
             <div class="products">
 
@@ -120,20 +121,16 @@
                         <p name="description">{{ $product->description }}</p>
 
                     </div>
-
-                    <div class="form-group-button">
-                        <form action="{{ route('product.edit', ['id' => $product->id]) }}" method="GET">
-                            @csrf
-                            <button name="update" type="submit" class="btn btn-primary">Update</button>
-                        </form>
-
-                            <button name="delete">Delete</button>
+                    
+                    <div class="form-group">
+                        <a href="{{ route('product.updateForm', ['id' => $product->id]) }}" class="btn btn-primary">Update</a>
+                        <button name="delete">Delete</button>
                     </div>
                 </div>
 
             @endforeach
             
-            </div>
+            </div> --}}
 
         </div>
         

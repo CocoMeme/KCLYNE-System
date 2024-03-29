@@ -49,6 +49,16 @@ use App\Http\Controllers\CustomerController;
         // Create
             Route::post('/product/create', [ProductController::class, 'createProduct'])->name('product.create');
 
+        // Update
+
+            // Route for displaying the product update form
+            Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+
+            // Route for updating a product
+            Route::put('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('product.update');
+
+
+
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
