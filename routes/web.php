@@ -53,8 +53,14 @@ use App\Http\Controllers\CustomerController;
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
         // Register
-        Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
-        Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
+            
+            Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
+            Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
+
+        // Login 
+
+            Route::get('/customer/login', [CustomerController::class, 'showLoginForm'])->name('customer.login');
+            Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login.submit');
 
 
 // EMPLOYEES

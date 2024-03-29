@@ -56,28 +56,30 @@
     {{-- FOR CUSTOMER --}}
     @else
 
-        @auth
+        @auth('customer')
             <a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
             <ul class="navmenu">
-                <li><a href="/">Home</a></li>|
-                <li><a href="/">Shop</a></li>|
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Shop</a></li>
+                <li><a href="/">Services</a></li>
                 <li><a href="/">About Us</a></li>
             </ul>
 
+            <div class="search">
+                <input type="text" placeholder="Search a Product">
+                <a href="" ><i class='bx bx-search-alt'></i></a>
+            </div>
+
             <div class="nav-icon">
                 <a href="">
-                    <i class='bx bx-cart-alt'> Cart </i>
+                    <i class='bx bx-cart-alt'></i>
                 </a>
                 <a href="/">
                     <i class='bx bx-bell'></i>
                 </a>
-                <form action="/" method="GET">
-                    @csrf
-                    <button class="userporfile" type="submit">
-                        <i class='bx bxs-user-circle'></i>
-                    </button>
-                </form>
-
+                <a href="">
+                    <i class='bx bxs-user-circle'></i>
+                </a>
                 <form action="/" method="POST">
                     @csrf
                     <button class="logout-button" type="submit">
@@ -103,7 +105,7 @@
 
             <div class="nav-icon">
                 <a href="/register"><i class='bx bx-user-plus'></i></a>
-                <a href="login"><i class='bx bx-log-in-circle'></i></a>
+                <a href="/customer/login"><i class='bx bx-log-in-circle'></i></a>
             </div>
         @endauth
 
