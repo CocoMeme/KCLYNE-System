@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeeController;
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
 
@@ -49,12 +50,16 @@ use App\Http\Controllers\CustomerController;
         // Create
             Route::post('/product/create', [ProductController::class, 'createProduct'])->name('product.create');
 
+    // EMPLOYEE
+
+        Route::get('/employee-management', [EmployeeController::class, 'employeeManagement'])->name('employee.management');
+
+        // Create
+            Route::post('/employee/create', [EmployeeController::class, 'createEmployee'])->name('employee.create');
+
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
         // Register
         Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
         Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
-
-
-// EMPLOYEES

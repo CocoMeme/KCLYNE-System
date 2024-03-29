@@ -37,6 +37,7 @@
                 <ul>
                     <li><a href="/"><i class='bx bx-home'></i> <span>Dashboard</span></a></li>
                     <li><a href="/product-management"><i class='bx bxs-grid' ></i><span>Product Management</span></a></li>
+                    <li><a href="/employee-management"><i class='bx bxs-user-badge'></i> <span>Employee Management</span></a></li>
                     <li><a href="/"><i class='bx bx-user'></i> <span>Customer Management</span></a></li>
                     <li><a href="/"><i class='bx bx-wallet'></i> <span>Payroll</span></a></li>
                     <li><a href="/"><i class='bx bx-book'></i> <span>Order History</span></a></li>
