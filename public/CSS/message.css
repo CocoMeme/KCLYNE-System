@@ -16,6 +16,22 @@
     animation: fadeOut 6s ease-in-out forwards;
 }
 
+.success-message-admin {
+    position: absolute;
+    width: 30%;
+    top: 50px;
+    left: 90px;
+
+    text-align: left;
+    background-color: rgb(194, 156, 156);
+    padding: 10px;
+    color: #fff;
+    z-index: 9999;
+    background: linear-gradient(to right, rgba(194, 156, 156, 1), rgba(232, 113, 33, 0));
+
+    animation: fadeOut 6s ease-in-out forwards;
+}
+
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }

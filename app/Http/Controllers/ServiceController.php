@@ -103,9 +103,11 @@ public function deleteService($id)
     // Delete service images
     $serviceImages = explode('|', $service->service_image);
     foreach ($serviceImages as $imageName) {
-        $imagePath = public_path('Images/Services/') . $imageName;
-        if (file_exists($imagePath)) {
-            unlink($imagePath);
+        if (!empty($imageName)) {
+            $imagePath = public_path('Images/Services/') . $imageName;
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
     }
 
@@ -115,5 +117,6 @@ public function deleteService($id)
     // Redirect back or wherever you want after service deletion
     return redirect()->back()->with('success', 'Service deleted successfully!');
 }
+
 
 }

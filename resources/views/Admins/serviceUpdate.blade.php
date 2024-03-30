@@ -2,6 +2,12 @@
 
     <body>
 
+        @if(session('success'))
+            <div class="success-message-admin">
+                {{ session('success') }}
+            </div>
+        @endif
+
     <section class="product-management">
 
         {{-- Service UPDATE --}}

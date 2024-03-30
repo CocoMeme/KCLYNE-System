@@ -1,6 +1,12 @@
 @extends('Layouts/header')
 
-<body>
+<body>      
+
+  @if(session('success'))
+    <div class="success-message-admin">
+        {{ session('success') }}
+    </div>
+  @endif
 
   <section class="product-management">
 
@@ -50,11 +56,7 @@
     {{-- SERVICE DISPLAY --}}
     <div class="show-product">
       <h2>All Services</h2>
-      @if(session('success'))
-      <div class="alert alert-success">
-        {{ session('success') }}
-      </div>
-      @endif
+
 
       @if (!is_null($service) && count($service) > 0)
       <table class="table table-bordered table-striped">
