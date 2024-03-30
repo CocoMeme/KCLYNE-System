@@ -5,7 +5,7 @@
     @auth('admin') 
     <section class="product-management">
 
-        {{-- PRODUCT CREATE --}}
+        {{-- PRODUCT UPDATE --}}
         <div class="create-product">
             <form class="form-create-product" action="{{ route('product.update', ['id' => $product->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -77,11 +77,12 @@
         
         {{-- PRODUTC DISPLAY --}}
         <div class="show-product">
-            {{-- <h2 style="text-align: center;">All Products</h2>
+            <h2 style="text-align: center;">All Products</h2>
 
             <div class="products">
 
             @foreach($products as $product)
+            
                 <div class="row">
                     
                     @php
@@ -122,15 +123,23 @@
 
                     </div>
                     
-                    <div class="form-group">
-                        <a href="{{ route('product.updateForm', ['id' => $product->id]) }}" class="btn btn-primary">Update</a>
-                        <button name="delete">Delete</button>
+                    <div class="form-group-button">
+                        <form action="{{ route('product.edit', ['id' => $product->id]) }}" method="GET">
+                            @csrf
+                            <button name="update" type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    
+                        <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button name="delete" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                        </form>
                     </div>
                 </div>
 
             @endforeach
             
-            </div> --}}
+            </div>
 
         </div>
         

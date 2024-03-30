@@ -32,9 +32,9 @@ class ProductController extends Controller
             'supplier_price' => 'required|numeric',
             'seller_retail_price' => 'required|numeric',
             'category' => 'required|string|max:255',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Multiple images
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Multiple images
         ]);
-
+    
         // Handle image upload
         $imageNames = [];
         if ($request->hasFile('images')) {
@@ -43,23 +43,29 @@ class ProductController extends Controller
                 $image->move(public_path('Images/Products'), $imageName);
                 $imageNames[] = $imageName;
             }
+        } else {
+            // If no images uploaded, set default image
+            $imageNames[] = 'no_product_image.jpg';
         }
-
+    
         // Store product in database
         $productData = $validatedData;
         $productData['product_image'] = implode('|', $imageNames);
         $product = Product::create($productData);
-
+    
         // Redirect back or wherever you want after product creation
         return redirect()->back()->with('success', 'Product created successfully!');
     }
+    
 
 
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('Admins.productUpdate', compact('product'));
+        $products = Product::all(); // Retrieve all products
+        return view('Admins.productUpdate', compact('product', 'products'));
     }
+    
     
 
     public function updateProduct(Request $request, $id)
@@ -74,9 +80,8 @@ class ProductController extends Controller
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Multiple images
         ]);
 
-        // Find the product by ID
         $product = Product::findOrFail($id);
-
+    
         // Handle image upload
         $imageNames = [];
         if ($request->hasFile('images')) {
@@ -85,8 +90,10 @@ class ProductController extends Controller
                 $image->move(public_path('Images/Products'), $imageName);
                 $imageNames[] = $imageName;
             }
+        } else {
+            $imageNames = explode('|', $product->product_image);
         }
-
+    
         // Update product data
         $product->update([
             'product_name' => $validatedData['product_name'],
@@ -96,10 +103,19 @@ class ProductController extends Controller
             'category' => $validatedData['category'],
             'product_image' => implode('|', $imageNames),
         ]);
-
+    
         // Redirect back or wherever you want after product update
         return redirect()->route('product.management')->with('success', 'Product updated successfully!');
     }
+    
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('product.management')->with('success', 'Product deleted successfully!');
+    }
+
 
 
     

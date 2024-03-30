@@ -73,6 +73,7 @@ label[name="Stat"]{
 
 .row .form-group-button {
     display: flex;
+    width: 100%;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
 }
@@ -89,12 +90,14 @@ label[name="Stat"]{
     border: 3px solid rgb(74, 83, 118);
     background-color: #fff;
     color: rgb(74, 83, 118);
+    width: 112px;
 }
 
 .row .form-group-button button[name="delete"] {
     border: 3px solid rgb(194, 156, 156);
     background-color: #fff;
     color: rgb(194, 156, 156);
+    width: 112px;
 }
 
 .row .form-group-button button[name="update"]:hover {

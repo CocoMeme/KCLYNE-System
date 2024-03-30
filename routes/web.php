@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CustomerController;
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
@@ -14,8 +15,6 @@ use App\Http\Controllers\CustomerController;
     Route::get('/home', function () {
         return view('Layouts/home')->name('home');;
     });
-
-
 
 
 
@@ -56,6 +55,28 @@ use App\Http\Controllers\CustomerController;
 
             // Route for updating a product
             Route::put('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('product.update');
+
+        // Delete
+
+            Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
+        // SERVISE RELATED ADMIN
+
+            // Route for showing a service
+            Route::get('/service-management', [ServiceController::class, 'showService'])->name('service.show');
+
+            // Route for creating a service (POST request)
+            Route::post('/service/create', [ServiceController::class, 'createService'])->name('service.store');
+
+            //EDit
+            Route::get('/service/edit/{id}', [ServiceController::class, 'editService'])->name('service.edit');
+
+            // Route for updating a service (PUT request)
+            Route::put('/service/update/{id}', [ServiceController::class, 'updateService'])->name('service.update');
+
+            // Route for deleting a service (DELETE request)
+            Route::delete('/services/{id}', [ServiceController::class, 'deleteService'])->name('service.destroy');
+
 
 
 

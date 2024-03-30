@@ -46,7 +46,7 @@
                     <label for="category">Category:</label>
                     <select name="category" required>
                         <option value="Oil">Oil</option>
-                        <option value="Spare Part">Spare Part</option>
+                        <option value="Spair Part">Spair Part</option>
                         <option value="Tires & Wheels">Tires & Wheels</option>
                     </select>
                     @error('category')
@@ -126,9 +126,14 @@
                             @csrf
                             <button name="update" type="submit" class="btn btn-primary">Update</button>
                         </form>
-
-                            <button name="delete">Delete</button>
+                    
+                        <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button name="delete" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                        </form>
                     </div>
+                    
                 </div>
 
             @endforeach
