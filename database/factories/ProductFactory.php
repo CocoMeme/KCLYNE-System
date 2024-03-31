@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Generator as Faker;
 
 class ProductFactory extends Factory
 {
@@ -42,5 +44,21 @@ class ProductFactory extends Factory
             'category' => $this->faker->randomElement(['Oil', 'Spair Part', 'Tires & Wheels']),
             'product_image' => $productName . '.png' . '|' . $productName . ' 2.png',
         ];
+    }
+
+    /**
+     * Define the model's state for associating with stock.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function withStock()
+    {
+        return $this->afterCreating(function (Product $product) {
+            // Create stock entry for the product
+            $stock = new Stock();
+            $stock->product_id = $product->id;
+            $stock->product_stock = $this->faker->numberBetween(80, 99); // Example stock value
+            $stock->save();
+        });
     }
 }

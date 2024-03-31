@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->string('position')->nullable();
             $table->bigInteger('payrate_per_hour')->nullable();
             $table->string('employee_image')->nullable();
+            $table->enum('status', ['Verified', 'Pending']);
             $table->timestamps();
         });
     }

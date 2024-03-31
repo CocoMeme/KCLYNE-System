@@ -60,21 +60,23 @@ use App\Http\Controllers\CustomerController;
 
             Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
-        // SERVISE RELATED ADMIN
 
-            // Route for showing a service
-            Route::get('/service-management', [ServiceController::class, 'showService'])->name('service.show');
 
-            // Route for creating a service (POST request)
+    // SERVISE RELATED ADMIN
+
+        Route::get('/service-management', [ServiceController::class, 'showService'])->name('service.show');
+
+        // Create
+        
             Route::post('/service/create', [ServiceController::class, 'createService'])->name('service.store');
 
-            //EDit
-            Route::get('/service/edit/{id}', [ServiceController::class, 'editService'])->name('service.edit');
+        // Edit
 
-            // Route for updating a service (PUT request)
+            Route::get('/service/edit/{id}', [ServiceController::class, 'editService'])->name('service.edit');
             Route::put('/service/update/{id}', [ServiceController::class, 'updateService'])->name('service.update');
 
-            // Route for deleting a service (DELETE request)
+        // Delete
+
             Route::delete('/services/{id}', [ServiceController::class, 'deleteService'])->name('service.destroy');
 
 
@@ -92,6 +94,12 @@ use App\Http\Controllers\CustomerController;
 
             Route::get('/customer/login', [CustomerController::class, 'showLoginForm'])->name('customer.login');
             Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login.submit');
+
+        // Shop
+
+            Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
+
+
 
 
 // EMPLOYEES

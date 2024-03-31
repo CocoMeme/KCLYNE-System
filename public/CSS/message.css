@@ -37,24 +37,65 @@
     100% { opacity: 0; }
 }
 
-/* ADMIN =======================================  */
+/* LOGIN =======================================  */
 
-.admin-login-error p{
-    font-size: 14px;
-    padding: 5px;
-    background-color: red;
-    color: #fff;
-    width: 300px;
-}
+    /* Admin */
 
-.form-admin-login span{
-    font-size: 14px;
-    padding: 5px;
-    background-color: red;
-    color: #fff;
-    width: 300px;
-}
+    .admin-login-error p{
+        font-size: 14px;
+        padding: 5px;
+        background-color: red;
+        color: #fff;
+        width: 300px;
+    }
+
+    .form-admin-login span{
+        font-size: 14px;
+        padding: 5px;
+        background-color: red;
+        color: #fff;
+        width: 300px;
+    }
+
+    /* Customer */
+
+    .customer-login-error p{
+        font-size: 14px;
+        padding: 5px;
+        background-color: red;
+        color: #fff;
+        width: 300px;
+    }
+
+    .form-customer-login span{
+        font-size: 14px;
+        padding: 5px;
+        background-color: red;
+        color: #fff;
+        width: 300px;
+    }
+
+/* REGISTER */
+
+    /* Customer */
+
+    .customer-register span{
+        color: red; /* Set the text color to red */
+        font-size: 11px; /* Adjust the font size */
+        margin-top: 5px; /* Add some spacing above the error message */
+        display: block; /* Ensure each error message appears on a new line */
+        width: 90px;
+        margin-left: 10px;
+    }
 
 
 /* CREATING PRODUCT ============================= */
 
+.form-create-product .error{
+    color: red; /* Set the text color to red */
+    font-size: 11px; /* Adjust the font size */
+    margin-top: 5px; /* Add some spacing above the error message */
+    display: block; /* Ensure each error message appears on a new line */
+    width: 90px;
+    margin-left: 10px;
+}

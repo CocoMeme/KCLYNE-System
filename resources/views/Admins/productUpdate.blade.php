@@ -19,7 +19,7 @@
                 <h2 style="text-align: center;">Product Information</h2>
                 <div class="group">
                     <label for="product_name">Product Name:</label>
-                    <input name="product_name" type="text" placeholder="Enter the product name" value="{{ $product->product_name }}" required>
+                    <input name="product_name" type="text" placeholder="Enter the product name" value="{{ $product->product_name }}" >
                     @error('product_name')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -27,7 +27,7 @@
             
                 <div class="group">
                     <label for="description">Description:</label>
-                    <textarea name="description" placeholder="Enter the product Description" cols="30" rows="10" required>{{ $product->description }}</textarea>
+                    <textarea name="description" placeholder="Enter the product Description" cols="30" rows="10" >{{ $product->description }}</textarea>
                     @error('description')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -35,7 +35,7 @@
             
                 <div class="group">
                     <label for="supplier_price">Supplier Price:</label>
-                    <input name="supplier_price" type="number" placeholder="Enter the supplier price" value="{{ $product->supplier_price }}" required>
+                    <input name="supplier_price" type="number" placeholder="Enter the supplier price" value="{{ $product->supplier_price }}" >
                     @error('supplier_price')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -43,7 +43,7 @@
             
                 <div class="group">
                     <label for="seller_retail_price">Seller Retail Price:</label>
-                    <input name="seller_retail_price" type="number" placeholder="Enter the seller retail price" value="{{ $product->seller_retail_price }}" required>
+                    <input name="seller_retail_price" type="number" placeholder="Enter the seller retail price" value="{{ $product->seller_retail_price }}" >
                     @error('seller_retail_price')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -51,7 +51,7 @@
             
                 <div class="group">
                     <label for="category">Category:</label>
-                    <select name="category" required>
+                    <select name="category" >
                         <option value="Oil" {{ $product->category == 'Oil' ? 'selected' : '' }}>Oil</option>
                         <option value="Spair Part" {{ $product->category == 'Spair Part' ? 'selected' : '' }}>Spair Part</option>
                         <option value="Tires & Wheels" {{ $product->category == 'Tires & Wheels' ? 'selected' : '' }}>Tires & Wheels</option>
@@ -63,7 +63,7 @@
             
                 <div class="group">
                     <label for="stock">Stock:</label>
-                    <input name="stock" type="number" placeholder="Enter the stock" value="{{ $product->stock }}" required>
+                    <input name="stock" type="number" placeholder="Enter the stock" value="{{ $product->stock->product_stock }}" >
                     @error('stock')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label name="Stat" for="">Stocks:</label><p> -- </p>
+                            <label name="Stat" for="">Stocks:</label><p> - - - {{ $product->stock->product_stock }} </p>
                         </div>
 
                         <p name="description">{{ $product->description }}</p>

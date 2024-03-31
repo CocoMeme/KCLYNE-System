@@ -27,6 +27,7 @@ class Customer extends Authenticatable
         'city',
         'province',
         'customer_image',
+        'status',
     ];
 
     protected $hidden = [

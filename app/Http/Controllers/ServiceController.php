@@ -36,13 +36,14 @@ class ServiceController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $imageName = $image->getClientOriginalName();
-                $image->move(public_path('Images/Services'), $imageName);
+                $image->move(public_path('images/Services'), $imageName);
                 $imageNames[] = $imageName;
             }
-        } else {
-            // If no images uploaded, set default image
-            $imageNames[] = 'no_service_image.jpg';
         }
+        // $serviceData = $validatedData;
+        // $serviceData['image'] = implode('|', $imageName);
+        // $service = Service::create($serviceData);
+        
     
         // Store service in database
         $service = new Service();
@@ -74,25 +75,44 @@ class ServiceController extends Controller
     // Find the service by id
     $service = Service::findOrFail($id);
 
-    // Handle image upload
-    if ($request->hasFile('images')) {
-        $imageNames = [];
-        foreach ($request->file('images') as $image) {
-            $imageName = $image->getClientOriginalName();
-            $image->move(public_path('Images/Services'), $imageName);
-            $imageNames[] = $imageName;
-        }
-        // Merge new images with existing ones
-        $image = explode('|', $service->image);
-        $image = array_merge($image, $imageNames);
-        $service->image = implode('|', $image);
-    }
+     // Handle image upload
+     $imageNames = [];
+     if ($request->hasFile('images')) {
+         foreach ($request->file('images') as $image) {
+             $imageName = $image->getClientOriginalName();
+             $image->move(public_path('Images/Services'), $imageName);
+             $imageNames[] = $imageName;
+         }
+     }
 
-    // Update service data
-    $service->update($validatedData);
+     // Update product data
+     $service->update([
+         'service_name' => $validatedData['service_name'],
+         'description' => $validatedData['description'],
+         'price' => $validatedData['price'],
+         'image' => implode('|', $imageNames),
+     ]);
+
+
+    // // Handle image upload
+    // if ($request->hasFile('images')) {
+    //     $imageNames = [];
+    //     foreach ($request->file('images') as $image) {
+    //         $imageName = $image->getClientOriginalName();
+    //         $image->move(public_path('Images/Services'), $imageName);
+    //         $imageNames[] = $imageName;
+    //     }
+    //     // Merge new images with existing ones
+    //     $image = explode('|', $service->image);
+    //     $image = array_merge($image, $imageNames);
+    //     $service->image = implode('|', $image);
+    // }
+
+    // // Update service data
+    // $service->update($validatedData);
 
     // Redirect back or wherever you want after service update
-    return redirect()->back()->with('success', 'Service updated successfully!');
+    return redirect()->route('service.show')->with('success', 'Service updated successfully!');
 }
 
 public function deleteService($id)
@@ -101,13 +121,11 @@ public function deleteService($id)
     $service = Service::findOrFail($id);
 
     // Delete service images
-    $serviceImages = explode('|', $service->service_image);
-    foreach ($serviceImages as $imageName) {
-        if (!empty($imageName)) {
-            $imagePath = public_path('Images/Services/') . $imageName;
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
+    $image = explode('|', $service->image);
+    foreach ($image as $imageName) {
+        $imagePath = public_path('Images/Services/') . $imageName;
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
     }
 
@@ -117,6 +135,5 @@ public function deleteService($id)
     // Redirect back or wherever you want after service deletion
     return redirect()->back()->with('success', 'Service deleted successfully!');
 }
-
 
 }

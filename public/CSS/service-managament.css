@@ -1,6 +1,6 @@
 /* SECTION ////////////////////////////////////////// */
 
-.product-management {
+.service-management {
     display: flex;
     height: 100vh;
     justify-content: space-between; /* To create two columns */
@@ -8,19 +8,19 @@
     padding: 5% 5% 5% 7%;
 }
 
-.create-product{
+.create-service{
     width: calc(35% - 5px); /* Set width for each part */
     box-sizing: border-box; /* Include padding in width calculation */
 }
-.show-product {
+.show-service {
     width: calc(70% - 5px); /* Set width for each part */
     padding: 20px; /* Add padding for spacing */
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
-/* PRODUCT CREATE SECTION ////////////////////////////////////////// */
+/* SERVICE CREATE SECTION ////////////////////////////////////////// */
 
-.create-product {
+.create-service {
     display: flex;
     flex-direction: row;
     /* align-items: center; */
@@ -28,7 +28,7 @@
     height: 80vh;
 }
 
-.form-create-product {
+.form-create-service {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,20 +37,20 @@
     box-shadow: 0 5px 10px rgb(74, 83, 118);
     background-color: #fff;
     text-align: center;
-    width: 500px;
+
 }
 
-.form-create-product p{
+.form-create-service p{
     font-size: 14px;
 }
 
-.form-create-product a{
+.form-create-service a{
     font-weight: 1000;
     color: rgb(194, 156, 156);
 }
 
-.form-create-product h2,
-.show-product h2 {
+.form-create-service h2,
+.show-service h2 {
     font-size: 20px;
     width: 100%;
     height: 50px;
@@ -64,8 +64,8 @@
     background-color: rgb(74, 83, 118);
 }
 
-.form-create-product input{
-    width: 250px;
+.form-create-service input{
+    width: 300px;
     padding: 10px 15px;
     font-size: 17px;
     margin: 8px 0;
@@ -77,8 +77,8 @@
     border-bottom: 1px solid rgb(194, 156, 156);
 }
 
-.form-create-product textarea{
-    width: 250px;
+.form-create-service textarea{
+    width: 300px;
     height: 100px;
     padding: 10px 15px;
     font-size: 17px;
@@ -91,8 +91,8 @@
     border-bottom: 1px solid rgb(194, 156, 156);
 }
 
-.form-create-product select{
-    width: 250px;
+.form-create-service select{
+    width: 300px;
     padding: 10px 15px;
     font-size: 17px;
     margin: 8px 0;
@@ -105,7 +105,7 @@
 }
 
 
-.form-create-product button{
+.form-create-service button{
     display: inline-block;
     width: 300px;
     margin: 5%;
@@ -121,37 +121,36 @@
     transition: all 1s ease;
 }
 
-.group{
+.form-create-service .group{
     display: flex;
     width: 100%;
     justify-content: center;
     align-items:last baseline;
 }
 
-.group label{
+.form-create-service .group label{
     text-align: right;
-    width: 100px;
-    margin-right: 20px;
-    font-size: 14px;
+    width: 120px;
+    margin-right: 20px
 }
 
 /* EFFECTS */
 
-.form-create-product input:hover, 
-.form-create-product textarea:hover{
+.form-create-service input:hover, 
+.form-create-service textarea:hover{
     border-top: 2px solid rgb(74, 83, 118);
     border-left: 2px solid rgb(74, 83, 118);
     border-right: 1px solid rgb(74, 83, 118);
     border-bottom: 1px solid rgb(74, 83, 118);
 }
 
-.form-create-product button:hover{
+.form-create-service button:hover{
     background-color: rgb(74, 83, 118);
 }
 
 /* SHOW PRODUCT SECTION */
 
-.show-product{
+.show-service{
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgb(74, 83, 118);

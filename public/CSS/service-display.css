@@ -1,13 +1,10 @@
 
 /* PRODUCT MANAGEMENT DISPLAY ================================================= */
 
-
-.products {
+.services {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to the next row */
     justify-content: center; /* Horizontally center align items */
-    max-height: 618px; /* Set a maximum height for the div */
-    overflow-y: auto; /* Enable vertical scrollbar */
 }
 
 .row {
@@ -43,7 +40,7 @@
     scale: 98%;
 }
 
-.product-info {
+.service-info {
     padding: 7px;
     background-color: #ebebeb;
     flex: 1; /* Fill remaining space in the parent container */
@@ -51,32 +48,31 @@
     height: 130;
 }
 
-.product-info p{
+.service-info p{
     font-size: 12px;
 }
 
-.product-info p[name='description'] {
+.service-info p[name='description'] {
     text-align: justify;
     font-size: 10px;
     height: 60px;
     overflow: hidden;
 }
 
-.product-info .form-group{
+.service-info .form-group{
     width: 100%;
     display: flex; /* Use flexbox to layout elements */
     flex-wrap: wrap; /* Allow elements to wrap to the next line if needed */
 }
 
 label[name="Stat"]{
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
-    width: 70%;
+    width: 80%;
 }
 
 .row .form-group-button {
     display: flex;
-    width: 100%;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
 }
@@ -93,14 +89,12 @@ label[name="Stat"]{
     border: 3px solid rgb(74, 83, 118);
     background-color: #fff;
     color: rgb(74, 83, 118);
-    width: 112px;
 }
 
 .row .form-group-button button[name="delete"] {
     border: 3px solid rgb(194, 156, 156);
     background-color: #fff;
     color: rgb(194, 156, 156);
-    width: 112px;
 }
 
 .row .form-group-button button[name="update"]:hover {
@@ -116,6 +110,8 @@ label[name="Stat"]{
     color: #fff;
     scale: 98%;
 }
+
+
 
 
 
