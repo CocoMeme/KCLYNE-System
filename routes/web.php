@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 
@@ -15,8 +16,6 @@ use App\Http\Controllers\EmployeeController;
     Route::get('/home', function () {
         return view('Layouts/home')->name('home');;
     });
-
-
 
 
 
@@ -50,6 +49,7 @@ use App\Http\Controllers\EmployeeController;
         // Create
             Route::post('/product/create', [ProductController::class, 'createProduct'])->name('product.create');
 
+<<<<<<< HEAD
     // EMPLOYEE RELATED ADMIN
 
         Route::get('/employee-management', [EmployeeController::class, 'employeeManagement'])->name('employee.management');
@@ -73,6 +73,42 @@ use App\Http\Controllers\EmployeeController;
         // Delete
 
         Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
+=======
+        // Update
+
+            // Route for displaying the product update form
+            Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+
+            // Route for updating a product
+            Route::put('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('product.update');
+
+        // Delete
+
+            Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
+
+
+    // SERVISE RELATED ADMIN
+
+        Route::get('/service-management', [ServiceController::class, 'showService'])->name('service.show');
+
+        // Create
+        
+            Route::post('/service/create', [ServiceController::class, 'createService'])->name('service.store');
+
+        // Edit
+
+            Route::get('/service/edit/{id}', [ServiceController::class, 'editService'])->name('service.edit');
+            Route::put('/service/update/{id}', [ServiceController::class, 'updateService'])->name('service.update');
+
+        // Delete
+
+            Route::delete('/services/{id}', [ServiceController::class, 'deleteService'])->name('service.destroy');
+
+
+
+
+>>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
@@ -86,7 +122,16 @@ use App\Http\Controllers\EmployeeController;
             Route::get('/customer/login', [CustomerController::class, 'showLoginForm'])->name('customer.login');
             Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login.submit');
 
+<<<<<<< HEAD
         // Logout
+=======
+        // Shop
+
+            Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
+
+
+
+>>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
 
             Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
 

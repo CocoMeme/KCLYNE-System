@@ -7,19 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>KCLYNE</title>
 
+
     <link href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="{{ asset('css/header-footer.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/admin-forms.css') }}" rel="stylesheet">
     <link href="{{ asset('css/customer-forms.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/message.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     <link href="{{ asset('css/product-management.css') }}" rel="stylesheet">
     <link href="{{ asset('css/employee-management.css') }}" rel="stylesheet">
+=======
+
+    <link href="{{ asset('css/product-management.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/product-display.css') }}" rel="stylesheet">
+
+    
+    <link href="{{ asset('CSS/service-managament.css') }}" rel="stylesheet">
+    <link href="{{ asset('css\service-display.css') }}" rel="stylesheet">
+>>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
 
 </head>
 
@@ -36,8 +49,13 @@
             <div class="menu-items">
                 <ul>
                     <li><a href="/"><i class='bx bx-home'></i> <span>Dashboard</span></a></li>
+<<<<<<< HEAD
                     <li><a href="/product-management"><i class='bx bxs-grid' ></i><span>Product Management</span></a></li>
                     <li><a href="/employee-management"><i class='bx bxs-user-badge'></i> <span>Employee Management</span></a></li>
+=======
+                    <li><a href="/product-management"><i class='bx bxs-grid'></i><span>Product Management</span></a></li>
+                    <li><a href="/service-management"><i class='bx bx-wrench'></i><span>Service Management</span></a></li>
+>>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
                     <li><a href="/"><i class='bx bx-user'></i> <span>Customer Management</span></a></li>
                     <li><a href="/"><i class='bx bx-wallet'></i> <span>Payroll</span></a></li>
                     <li><a href="/"><i class='bx bx-book'></i> <span>Order History</span></a></li>
@@ -61,7 +79,7 @@
             <a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
             <ul class="navmenu">
                 <li><a href="/">Home</a></li>
-                <li><a href="/">Shop</a></li>
+                <li><a href="/shop">Shop</a></li>
                 <li><a href="/">Services</a></li>
                 <li><a href="/">About Us</a></li>
             </ul>

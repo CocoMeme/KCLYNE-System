@@ -4,10 +4,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Models\Customer;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -23,10 +24,10 @@ class CustomerController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:customers',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8|confirmed',
             'birth_date' => 'required|date',
             'sex' => 'required|in:Male,Female',
-            'phone' => 'required|string|max:20',
+            'phone' => 'nullable|string|max:20',
             'house_no' => 'nullable|integer',
             'street' => 'nullable|string|max:255',
             'baranggay' => 'nullable|string|max:255',
@@ -45,6 +46,7 @@ class CustomerController extends Controller
             $customerImage->move(public_path('images/customers'), $imageName);
         }
     
+        // Create the customer record with 'Pending' status
         $customer = Customer::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -59,10 +61,12 @@ class CustomerController extends Controller
             'city' => $request->city,
             'province' => $request->province,
             'customer_image' => $imageName,
+            'status' => 'Pending', // Set the default status to 'Pending'
         ]);
     
         return redirect()->route('home')->with('success', 'Registration successful. Please log in.');
     }
+    
 
     public function showLoginForm()
     {
@@ -80,11 +84,21 @@ class CustomerController extends Controller
         return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
     }
 
+<<<<<<< HEAD
     public function logoutCustomer()
     {
         Auth::guard('customer')->logout();
 
         return redirect()->route('customer.login.submit')->with('success', 'You have been logged out.');
     }
+=======
+    public function shop()
+    {
+        $products = Product::all();
+        return view('Customers.shop', compact('products'));
+    }
+
+
+>>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
     
 }
