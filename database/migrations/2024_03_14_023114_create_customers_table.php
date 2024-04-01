@@ -16,7 +16,7 @@ class CreateCustomersTable extends Migration
             $table->string('password');
             $table->date('birth_date');
             $table->enum('sex', ['Male', 'Female']);
-            $table->string('phone', 20);
+            $table->string('phone', 20)->nullable();
             $table->bigInteger('house_no')->nullable();
             $table->string('street')->nullable();
             $table->string('baranggay')->nullable();
