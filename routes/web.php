@@ -63,15 +63,18 @@ use App\Http\Controllers\EmployeeController;
         Route::get('/fetch-employee/{id}', [EmployeeController::class, 'fetchEmployee']);
 
         // Update
+        
+            Route::put('/update-employee/{id}', [EmployeeController::class, 'update']);
 
-        Route::put('/update-employee/{id}', [EmployeeController::class, 'update']);
         //Documents
-        Route::get('/edit-document/{employee_id}/{document_id}', [EmployeeController::class, 'editDocument']);
+
+            Route::get('/edit-document/{employee_id}/{document_id}', [EmployeeController::class, 'editDocument']);
 
 
         // Delete
 
-        Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
+            Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
+
         // Update
 
             // Route for displaying the product update form
@@ -120,14 +123,14 @@ use App\Http\Controllers\EmployeeController;
             Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login.submit');
 
         // Logout
+        
+            Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
+            
         // Shop
 
             Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 
-
-
-
-            Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
+;
 
 
 // EMPLOYEES

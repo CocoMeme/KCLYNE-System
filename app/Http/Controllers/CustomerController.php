@@ -64,7 +64,7 @@ class CustomerController extends Controller
             'status' => 'Pending', // Set the default status to 'Pending'
         ]);
     
-        return redirect()->route('home')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('customer.login')->with('success', 'Registration successful. Please log in.');
     }
     
 

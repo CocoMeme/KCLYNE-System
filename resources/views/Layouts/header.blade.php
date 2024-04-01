@@ -25,11 +25,11 @@
     <link href="{{ asset('css/employee-management.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/product-management.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/product-display-customer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/product-display.css') }}" rel="stylesheet">
-
     
-    <link href="{{ asset('CSS/service-managament.css') }}" rel="stylesheet">
-    <link href="{{ asset('css\service-display.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/service-managament.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/service-display.css') }}" rel="stylesheet">
 
 </head>
 
@@ -94,11 +94,13 @@
                     <i class='bx bxs-user-circle'></i>
                 </a>
                 <div class="logout-button">
-                <form action="{{ route('customer.logout.submit') }}" method="POST">
-                    @csrf
-                    <button type="submit"><i class='bx bx-log-out-circle'></i></button>
-                </form>
-            </div>
+                    <form action="{{ route('customer.logout.submit') }}" method="POST">
+                        @csrf
+                        <a href="{{ route('customer.logout.submit') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i class='bx bx-log-out-circle'></i>
+                        </a>
+                    </form>
+                </div>
             </div>
 
         {{-- FOR VISITORS --}}

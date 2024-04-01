@@ -1,16 +1,21 @@
 
-/* PRODUCT MANAGEMENT DISPLAY ================================================= */
+/* PRODUCT SHOP DISPLAY ================================================= */
 
+.product-shop{
+    margin-top: 50px;
+}
 
-.product-management .products {
+.display-product{
+
+}
+
+.product-shop .products {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to the next row */
     justify-content: center; /* Horizontally center align items */
-    max-height: 618px; /* Set a maximum height for the div */
-    overflow-y: auto; /* Enable vertical scrollbar */
 }
 
-.row {
+.product-shop .row {
     width: 245px;
     height: 365px;
     margin: 10px; /* Add margin between each row */
@@ -22,14 +27,14 @@
     flex-direction: column; /* Stack child elements vertically */
 }
 
-.row img {
+.product-shop .row img {
     width: 120px;
     height: 120px;
     display: block; /* Ensures the image behaves like a block element */
     margin: 15px auto; /* Centers the image horizontally */
 }
 
-.row h3 {
+.product-shop .row h3 {
     width: 100%;
     font-size: 15px;
     padding: 7px;
@@ -39,11 +44,11 @@
     margin-bottom: 5px;
 }
 
-.row:hover {
+.product-shop .row:hover {
     scale: 98%;
 }
 
-.product-info {
+.product-shop .product-info {
     padding: 7px;
     background-color: #ebebeb;
     flex: 1; /* Fill remaining space in the parent container */
@@ -51,37 +56,37 @@
     height: 130;
 }
 
-.product-info p{
+.product-shop .product-info p{
     font-size: 12px;
 }
 
-.product-info p[name='description'] {
+.product-shop .product-info p[name='description'] {
     text-align: justify;
     font-size: 10px;
     height: 60px;
     overflow: hidden;
 }
 
-.product-info .form-group{
+.product-shop .product-info .form-group{
     width: 100%;
     display: flex; /* Use flexbox to layout elements */
     flex-wrap: wrap; /* Allow elements to wrap to the next line if needed */
 }
 
-label[name="Stat"]{
+.product-shop label[name="Stat"]{
     font-size: 11px;
     font-weight: 800;
     width: 70%;
 }
 
-.row .form-group-button {
+.product-shop .row .form-group-button {
     display: flex;
     width: 100%;
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
 }
 
-.row .form-group-button button {
+.product-shop .row .form-group-button button {
     flex: 1; /* Make buttons take up equal space */
     margin-right: 5px; /* Add 5px right margin between buttons */
     font-size: 13px;
@@ -89,34 +94,31 @@ label[name="Stat"]{
     transition: all 0.5s ease;
 }
 
-.row .form-group-button button[name="update"] {
+.product-shop .row .form-group-button button[name="update"] {
     border: 3px solid rgb(74, 83, 118);
     background-color: #fff;
     color: rgb(74, 83, 118);
     width: 112px;
 }
 
-.row .form-group-button button[name="delete"] {
+.product-shop .row .form-group-button button[name="delete"] {
     border: 3px solid rgb(194, 156, 156);
     background-color: #fff;
     color: rgb(194, 156, 156);
     width: 112px;
 }
 
-.row .form-group-button button[name="update"]:hover {
+.product-shop .row .form-group-button button[name="update"]:hover {
     border: 3px solid rgb(74, 83, 118);
     background-color: rgb(74, 83, 118);
     color: #fff;
     scale: 98%;
 }
 
-.row .form-group-button button[name="delete"]:hover {
+.product-shop .row .form-group-button button[name="delete"]:hover {
     border: 3px solid rgb(194, 156, 156);
     background-color: rgb(194, 156, 156);
     color: #fff;
     scale: 98%;
 }
 
-
-
-/* PRODUCT CUSTOMER DISPLAY =================================================== */
