@@ -49,7 +49,6 @@ use App\Http\Controllers\EmployeeController;
         // Create
             Route::post('/product/create', [ProductController::class, 'createProduct'])->name('product.create');
 
-<<<<<<< HEAD
     // EMPLOYEE RELATED ADMIN
 
         Route::get('/employee-management', [EmployeeController::class, 'employeeManagement'])->name('employee.management');
@@ -73,7 +72,6 @@ use App\Http\Controllers\EmployeeController;
         // Delete
 
         Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
-=======
         // Update
 
             // Route for displaying the product update form
@@ -108,7 +106,6 @@ use App\Http\Controllers\EmployeeController;
 
 
 
->>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
@@ -122,16 +119,13 @@ use App\Http\Controllers\EmployeeController;
             Route::get('/customer/login', [CustomerController::class, 'showLoginForm'])->name('customer.login');
             Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login.submit');
 
-<<<<<<< HEAD
         // Logout
-=======
         // Shop
 
             Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 
 
 
->>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
 
             Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
 
