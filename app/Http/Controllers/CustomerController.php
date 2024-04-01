@@ -7,9 +7,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
+
     public function showRegistrationForm()
     {
         return view('Customers.register');
@@ -61,4 +63,28 @@ class CustomerController extends Controller
     
         return redirect()->route('home')->with('success', 'Registration successful. Please log in.');
     }
+
+    public function showLoginForm()
+    {
+        return view('customers.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('customer')->attempt($credentials)) {
+            // Authentication successful
+            return redirect()->intended('/'); // Redirect to customer dashboard
+        }
+        // Authentication failed
+        return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
+    }
+
+    public function logoutCustomer()
+    {
+        Auth::guard('customer')->logout();
+
+        return redirect()->route('customer.login.submit')->with('success', 'You have been logged out.');
+    }
+    
 }

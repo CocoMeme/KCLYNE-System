@@ -3,8 +3,8 @@
 <body>
 
     <section class="section-admin-login">
-        <div class="login-page">
-            <form class="form-login-page" action="{{ route('admin.login.submit') }}" method="POST">
+        <div class="admin-login">
+            <form class="form-admin-login" action="{{ route('admin.login.submit') }}" method="POST">
                 @csrf
                 <h2>ADMIN LOGIN PAGE</h2>
 

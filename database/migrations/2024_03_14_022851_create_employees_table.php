@@ -23,12 +23,15 @@ class CreateEmployeesTable extends Migration
             $table->string('position')->nullable();
             $table->bigInteger('payrate_per_hour')->nullable();
             $table->string('employee_image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

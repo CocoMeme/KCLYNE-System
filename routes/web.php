@@ -50,16 +50,45 @@ use App\Http\Controllers\EmployeeController;
         // Create
             Route::post('/product/create', [ProductController::class, 'createProduct'])->name('product.create');
 
-    // EMPLOYEE
+    // EMPLOYEE RELATED ADMIN
 
         Route::get('/employee-management', [EmployeeController::class, 'employeeManagement'])->name('employee.management');
 
         // Create
             Route::post('/employee/create', [EmployeeController::class, 'createEmployee'])->name('employee.create');
 
+        // Read
+
+        Route::get('/fetch-employee-documents/{id}', [EmployeeController::class, 'fetchEmployeeDocuments']);
+
+        Route::get('/fetch-employee/{id}', [EmployeeController::class, 'fetchEmployee']);
+
+        // Update
+
+        Route::put('/update-employee/{id}', [EmployeeController::class, 'update']);
+        //Documents
+        Route::get('/edit-document/{employee_id}/{document_id}', [EmployeeController::class, 'editDocument']);
+
+
+        // Delete
+
+        Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
         // Register
-        Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
-        Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
+            
+            Route::get('/register', [CustomerController::class, 'showRegistrationForm'])->name('register');
+            Route::post('/register', [CustomerController::class, 'register'])->name('customer.register');
+
+        // Login 
+
+            Route::get('/customer/login', [CustomerController::class, 'showLoginForm'])->name('customer.login');
+            Route::post('/customer/login', [CustomerController::class, 'login'])->name('customer.login.submit');
+
+        // Logout
+
+            Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
+
+
+// EMPLOYEES

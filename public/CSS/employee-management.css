@@ -1,0 +1,134 @@
+/* SECTION ////////////////////////////////////////// */
+.create-employee,
+.show-employee {
+    width: calc(100%); /* Set width for each part */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* PRODUCT CREATE ////////////////////////////////////////// */
+
+.groupemployee{
+ 
+    width: 100%;
+}
+.groupemployeeemployee label {
+    /* text-align: right; */
+    width: 120px;
+    /* margin-right: 20px; */
+}
+
+.create-employee {
+    margin-bottom: 20px;
+}
+
+.form-create-employee input:hover, 
+.form-create-employee textarea:hover{
+    border-top: 2px solid rgb(74, 83, 118);
+    border-left: 2px solid rgb(74, 83, 118);
+    border-right: 1px solid rgb(74, 83, 118);
+    border-bottom: 1px solid rgb(74, 83, 118);
+}
+
+.form-create-employee {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-create-employee h2 {
+    text-align: center;
+}
+
+.form-create-employee .groupemployee {
+    margin-bottom: 15px;
+}
+
+.form-create-employee input[type="text"],
+.form-create-employee input[type="date"],
+.form-create-employee select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-create-employee input[type="file"] {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.form-create-employee button[type="submit"] {
+    background-color:rgb(84, 90, 116);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-create-employee button[type="submit"]:hover {
+    background-color: #333c56;
+}
+
+/* Styles for Edit Employee Form */
+.show-employee {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.show-employee h2 {
+    text-align: center;
+}
+
+.show-employee .groupemployee {
+    margin-bottom: 15px;
+}
+
+.show-employee label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.show-employee input[type="text"],
+.show-employee input[type="date"],
+.show-employee select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.show-employee input[type="file"] {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.show-employee button[type="submit"],
+.show-employee button[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 48%;
+}
+
+.show-employee button[type="submit"] {
+    background-color: rgb(84, 90, 116);
+    color: white;
+}
+
+.show-employee button[type="submit"]:hover {
+    background-color: #333c56;
+}
+
+.show-employee button[type="button"] {
+    background-color: rgba(194, 156, 156, 1);
+    color: white;
+}
+
+.show-employee button[type="button"]:hover {
+    background-color: rgb(183 140 140);
+}

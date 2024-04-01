@@ -81,7 +81,7 @@
 
 /* LOGIN PAGE */
 
-.login-page {
+.admin-login {
     margin-top: 70px;
     display: flex;
     flex-direction: column;
@@ -90,7 +90,7 @@
     height: 70vh;
 }
 
-.form-login-page {
+.form-admin-login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,7 +103,7 @@
     position: relative;
 }
 
-.form-login-page p{
+.form-admin-login p{
     font-size: 14px;
 }
 
@@ -112,7 +112,7 @@
     color: rgb(194, 156, 156);
 }
 
-.login-page h2{
+.admin-login h2{
     font-size: 20px;
     width: 100%;
     height: 50px;
@@ -126,7 +126,7 @@
     background-color: rgb(74, 83, 118);
 }
 
-.form-login-page input{
+.form-admin-login input{
     width: 300px;
     padding: 10px 15px;
     font-size: 17px;
@@ -139,7 +139,7 @@
     border-bottom: 1px solid rgb(194, 156, 156);
 }
 
-.form-login-page button{
+.form-admin-login button{
     display: inline-block;
     width: 300px;
     margin: 5%;
@@ -155,6 +155,6 @@
     transition: all 0.5s ease;
 }
 
-.form-login-page button:hover{
+.form-admin-login button:hover{
     background: rgb(74, 83, 118);
 }

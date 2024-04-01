@@ -30,3 +30,83 @@
     text-align: center;
     width: 700px;
 }
+
+/* LOGIN PAGE */
+
+.customer-login {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.form-customer-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgb(74, 83, 118);
+    background-color: #fff;
+    text-align: center;
+    width: 500px;
+    position: relative;
+}
+
+.form-customer-login p{
+    font-size: 14px;
+}
+
+.form-register-page a{
+    font-weight: 1000;
+    color: rgb(194, 156, 156);
+}
+
+.customer-login h2{
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0; /* Reset margin */
+    margin-bottom: 20px;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: rgb(74, 83, 118);
+}
+
+.form-customer-login input{
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 17px;
+    margin: 8px 0;
+    background: #eee;
+    border-radius: 3px;
+    border-top: 2px solid rgb(194, 156, 156);
+    border-left: 2px solid rgb(194, 156, 156);
+    border-right: 1px solid rgb(194, 156, 156);
+    border-bottom: 1px solid rgb(194, 156, 156);
+}
+
+.form-customer-login button{
+    display: inline-block;
+    width: 300px;
+    margin: 5%;
+    padding: 3% 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background: rgb(194, 156, 156);
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s ease;
+}
+
+.form-customer-login button:hover{
+    background: rgb(74, 83, 118);
+}
