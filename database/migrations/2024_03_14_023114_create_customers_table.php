@@ -23,7 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('city')->nullable();
             $table->string('province')->nullable();
             $table->string('customer_image')->nullable();
-
+            $table->enum('status', ['Verified', 'Pending']);
             $table->timestamps();
         });
     }

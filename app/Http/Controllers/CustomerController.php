@@ -84,14 +84,12 @@ class CustomerController extends Controller
         return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
     }
 
-<<<<<<< HEAD
     public function logoutCustomer()
     {
         Auth::guard('customer')->logout();
 
         return redirect()->route('customer.login.submit')->with('success', 'You have been logged out.');
     }
-=======
     public function shop()
     {
         $products = Product::all();
@@ -99,6 +97,5 @@ class CustomerController extends Controller
     }
 
 
->>>>>>> 5e00c6f10062c08078c383906326710e36d7de31
     
 }
