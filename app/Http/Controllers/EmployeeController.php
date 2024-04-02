@@ -76,7 +76,7 @@ class EmployeeController extends Controller
 
         foreach ($request->file('files') as $file) {
             // Generate a unique filename
-            $fileName = $request->employee_first_name . '_' . $request->employee_last_name . '_' . $request->document_type . '_' . uniqid();
+            $fileName = $request->employee_first_name . '' . $request->employee_last_name . '' . $request->document_type . '_' . uniqid();
         
             // Get the file extension
             $extension = $file->getClientOriginalExtension();
@@ -99,85 +99,105 @@ class EmployeeController extends Controller
         return redirect()->back()->with('success', 'Employee applied successfully!');
     }
 
-    public function fetchEmployee($id)
+    public function edit($id)
     {
         $employee = Employee::findOrFail($id);
-
-        return response()->json($employee);
+        $documents = EmployeeDocument::where('employee_id', $id)->get();    
+        return view('Admins.editEmployee', compact('employee', 'documents'));
     }
 
-    public function fetchEmployeeDocuments($id)
-    {
-        // Retrieve the employee and their associated documents
-        $employee = Employee::findOrFail($id);
-        $documents = EmployeeDocument::where('employee_id', $id)->get();
+    public function destroyDocument($employee_id, $document_id)
+{
+    try {
+        // Find the employee document
+        $document = EmployeeDocument::where('employee_id', $employee_id)
+                                     ->findOrFail($document_id);
 
-        // Return the employee and their documents as JSON response
-        return response()->json([
-            'employee' => $employee,
-            'documents' => $documents
-        ]);
+        // Delete the document file from storage
+        $filePath = public_path('Images/EmployeeDocuments/') . '/' . $document->file_name;
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+
+        // Delete the document record from the database
+        $document->delete();
+
+        return redirect()->back()->with('success', 'Document deleted successfully.');
+    } catch (\Exception $e) {
+        // Log or handle the error appropriately
+        return redirect()->back()->with('error', 'Failed to delete document.');
+    }
+}
+
+public function updateEmployee(Request $request, $id)
+{
+    // Validate request
+    $request->validate([
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
+        'birth_date' => 'required|date',
+        'sex' => 'required|in:Male,Female',
+        'phone' => 'required|string|max:20',
+        'house_no' => 'nullable|integer',
+        'street' => 'nullable|string|max:255',
+        'baranggay' => 'nullable|string|max:255',
+        'city' => 'nullable|string|max:255',
+        'province' => 'nullable|string|max:255',
+        'position' => 'required|in:Cashier,Mechanic',
+        'payrate_per_hour' => 'nullable|integer',
+        'employee_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
+
+    // Find the employee by ID
+    $employee = Employee::findOrFail($id);
+
+    // Handle image upload if present
+    if ($request->hasFile('employee_image')) {
+        $employeeImage = $request->file('employee_image');
+        $imageName = $employeeImage->getClientOriginalName();
+        $employeeImage->move(public_path('images/employees'), $imageName);
+        $employee->employee_image = $imageName;
     }
 
-    public function update(Request $request, $id)
-    {
-        $employee = Employee::find($id);
-        
-        $employee->update([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'birth_date' => $request->input('birth_date'),
-            'sex' => $request->input('sex'),
-            'phone' => $request->input('phone'),
-            'house_no' => $request->input('house_no'),
-            'street' => $request->input('street'),
-            'baranggay' => $request->input('baranggay'),
-            'city' => $request->input('city'),
-            'province' => $request->input('province'),
-            'position' => $request->input('position'),
-            'payrate_per_hour' => $request->input('payrate_per_hour'),
-        ]);
-        //Employee_image
-        if ($request->hasFile('edit_employee_image')) {
-            $currentImage = $employee->employee_image;
-            if ($currentImage) {
-                $imagePath = public_path('images/employees') . '/' . $currentImage;
-                if (File::exists($imagePath)) {
-                    File::delete($imagePath);
-                }
-            }
-            $employeeImage = $request->file('edit_employee_image');
-            $imageName = $employeeImage->getClientOriginalName();
-            $employeeImage->move(public_path('images/employees'), $imageName);
-            $employee->update(['employee_image' => $imageName]);
-        }
+    // Update employee information
+    $employee->update([
+        'first_name' => $request->first_name,
+        'last_name' => $request->last_name,
+        'birth_date' => $request->birth_date,
+        'sex' => $request->sex,
+        'phone' => $request->phone,
+        'house_no' => $request->house_no,
+        'street' => $request->street,
+        'baranggay' => $request->baranggay,
+        'city' => $request->city,
+        'province' => $request->province,
+        'position' => $request->position,
+        'payrate_per_hour' => $request->payrate_per_hour,
+    ]);
 
-            return redirect()->back()->with('success', 'Employee updated successfully.');
-        }
+    return redirect()->back()->with('success', 'Employee updated successfully!');
+}
 
-        public function destroyDocument(Request $request, $employee_id, $document_id)
-        {
-            // Validate the request
-            $request->validate([
-                'document_id' => 'required|exists:employee_documents,id',
+public function uploadDocuments(Request $request, $employee_id)
+{
+    if ($request->hasFile('files')) {
+        $files = $request->file('files');
+        $documentType = $request->input('document_type');
+
+        foreach ($files as $file) {
+            $fileName = $file->getClientOriginalName();
+
+            $file->move(public_path('images/EmployeeDocuments'), $fileName);
+
+            EmployeeDocument::create([
+                'employee_id' => $employee_id,
+                'document_type' => $documentType,
+                'file_name' => $fileName,
             ]);
-        
-            // Find the document by its ID and employee ID
-            $document = EmployeeDocument::where('id', $document_id)
-                                        ->where('employee_id', $employee_id)
-                                        ->firstOrFail();
-        
-            // Delete the document record
-            $document->delete();
-
-            // Delete the corresponding image file
-            $imagePath = public_path('Images/EmployeeDocuments/' . $document->file_name);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-        
-            // Optionally, you can return a response indicating success
-            return response()->json(['message' => 'Document deleted successfully']);
-        }        
+        }
     }
+
+    return redirect()->back()->with('success', 'Documents uploaded successfully!');
+}
 
 }

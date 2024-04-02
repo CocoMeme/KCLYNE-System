@@ -2,6 +2,12 @@
 
 <body>
 
+    @if(session('success'))
+        <div class="success-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <section class="section-customer-login">
         <div class="customer-login">
             <form class="form-customer-login" action="{{ route('customer.login.submit') }}" method="POST">

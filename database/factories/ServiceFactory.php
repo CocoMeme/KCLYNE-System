@@ -21,17 +21,19 @@ class ServiceFactory extends Factory
      */
     public function definition()
     {
+        $serviceName = $this->faker->unique()->randomElement([
+            'Change Oil',
+            'Engine Diagnostic',
+            'Electrical System Repair',
+            'Air Conditioning Service',
+            'Tire Services',
+        ]);
+
         return [
-            'service_name' => $this->faker->randomElement([
-                'Change Oil',
-                'Engine Diagnostic',
-                'Electrical System Repair',
-                'Air Conditioning Service',
-                'Tire Services',
-            ]),
-            'description' => $this->faker->paragraph(rand(3, 4)),
-            'price' => rand(500, 1000),
-            'image' => 'service_name.jpg',
+            'service_name' => $serviceName,
+            'description' => $this->faker->paragraph(),
+            'price' => $this->faker->numberBetween(500, 1000),
+            'image' => $serviceName . '.jpg',
         ];
     }
 }

@@ -21,8 +21,6 @@ class CreateEmployeeDocumentsTable extends Migration
 
     public function down()
     {
-        Schema::table('employee_documents', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('employee_documents');
     }
 }

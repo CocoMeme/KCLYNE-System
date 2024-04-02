@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CustomerChartController;
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
 
@@ -87,7 +89,10 @@ use App\Http\Controllers\EmployeeController;
 
             Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
+        // CHART
 
+            Route::get('/barchart', [CustomerChartController:: class, 'BarChart'])->name('bar.chart');
+            Route::get('/piechart', [CustomerChartController:: class, 'pieChart'])->name('pie.chart');
 
     // SERVISE RELATED ADMIN
 
@@ -106,11 +111,20 @@ use App\Http\Controllers\EmployeeController;
 
             Route::delete('/services/{id}', [ServiceController::class, 'deleteService'])->name('service.destroy');
 
+        // Search
+
+            Route::get('/service/search', [ServiceController::class, 'search'])->name('service.search');
 
 
 
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
+
+
+        Auth::routes([
+            'verify' => true
+        ]);
+
 
         // Register
             
@@ -125,12 +139,36 @@ use App\Http\Controllers\EmployeeController;
         // Logout
         
             Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
-            
+
         // Shop
 
             Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 
-;
+        // Service
+
+            Route::get('/customer-service', [ServiceController::class, 'showCustomerServices'])->name('customer.service');
 
 
 // EMPLOYEES
+
+    Route::get('/employee-management', [EmployeeController::class, 'employeeManagement'])->name('employee.management');
+
+    // Create
+
+        Route::post('/employee/create', [EmployeeController::class, 'createEmployee'])->name('employee.create');
+
+    // Read
+
+        Route::get('/fetch-employee-documents/{id}', [EmployeeController::class, 'fetchEmployeeDocuments']);
+
+        Route::get('/fetch-employee/{id}', [EmployeeController::class, 'fetchEmployee']);
+
+    // Update
+
+        Route::get('/edit-employee/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
+        Route::put('/update-employee/{id}', [EmployeeController::class, 'updateEmployee'])->name('employee.update');
+
+    // Delete Documents
+
+        Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument'])->name('delete-document');
+    

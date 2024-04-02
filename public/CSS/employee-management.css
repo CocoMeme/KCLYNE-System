@@ -1,4 +1,12 @@
 /* SECTION ////////////////////////////////////////// */
+
+.employee-management {
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5% 5% 5% 7%;
+}
 .create-employee,
 .show-employee {
     width: calc(100%); /* Set width for each part */
@@ -6,20 +14,21 @@
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
-/* PRODUCT CREATE ////////////////////////////////////////// */
-
-.groupemployee{
- 
-    width: 100%;
-}
-.groupemployeeemployee label {
-    /* text-align: right; */
-    width: 120px;
-    /* margin-right: 20px; */
-}
 
 .create-employee {
     margin-bottom: 20px;
+}
+
+.form-create-employee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgb(74, 83, 118);
+    background-color: #fff;
+    text-align: center;
+    width: 500px;
 }
 
 .form-create-employee input:hover, 
@@ -35,11 +44,25 @@
     margin: 0 auto;
 }
 
+.form-create-employee h2, .show-employee h2 {
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(74, 83, 118);
+}
+
 .form-create-employee h2 {
     text-align: center;
 }
 
-.form-create-employee .groupemployee {
+.form-create-employee .documentgroupemployee {
     margin-bottom: 15px;
 }
 
@@ -72,63 +95,205 @@
     background-color: #333c56;
 }
 
-/* Styles for Edit Employee Form */
-.show-employee {
-    width: 50%;
-    margin: 0 auto;
+#employees_table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-.show-employee h2 {
+.employee-image {
+    border-radius: 50%;
+    width: 80px;
+    height: 70px;
+}
+
+
+#employees_table th,
+#employees_table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#employees_table thead th {
+    background-color: rgb(183 140 140);
+    font-weight: bold;
+    text-align: center;
+    color: whitesmoke;
+}
+
+#employees_table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#employees_table tbody tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Action buttons */
+#employees_table .btn {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+#employees_table .btn-primary {
+    background-color: rgb(84, 90, 116);
+    color: #fff;
+    width: 60px;
+}
+
+#employees_table .btn-danger {
+    background-color: rgb(183 140 140);
+    color: #fff;
+}
+
+#employees_table .btn-primary:hover,
+#employees_table .btn-danger:hover {
+    opacity: 0.8;
+}
+
+.employee-image-container {
+    width: 120px; /* Adjust width as needed */
+    height: 120px; /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 50%; /* Make it circular */
+    margin: 0 auto; /* Center the image */
+}
+
+.edit-employee-image {
+    width: 100%; /* Ensure the image fills the container */
+    height: 100%; /* Ensure the image fills the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+/* documents */
+#upload_button,
+#add-document-input {
+    /* Styles for buttons */
+    background-color: rgb(74, 83, 118);
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#upload-form {
+    border: none;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+}
+
+#add-document-input {
+    background-color: rgb(228, 153, 104);
+}
+
+.show-documents {
+    margin-top: 36px;
+    width: 200%;
+}
+
+.show-documents h3 {
+    color: #333;
+}
+
+.show-documents table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.show-documents th, .show-documents td {
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: center;
 }
 
-.show-employee .groupemployee {
-    margin-bottom: 15px;
+.show-documents th {
+    background-color: #f2f2f2;
 }
 
-.show-employee label {
+.show-documents img {
+    max-width: 100px;
+    height: auto;
+}
+
+.upload-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.upload-container h2 {
+    text-align: center;
+}
+
+.documentgroup {
+    margin-bottom: 20px;
+}
+
+.documentgroup label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.show-employee input[type="text"],
-.show-employee input[type="date"],
-.show-employee select {
+.documentgroup input[type="text"],
+.documentgroup input[type="file"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
-.show-employee input[type="file"] {
-    width: 100%;
+.documentgroup input[type="file"] {
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
     margin-top: 5px;
 }
 
-.show-employee button[type="submit"],
-.show-employee button[type="button"] {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 48%;
-}
-
-.show-employee button[type="submit"] {
+#upload_button {
+    display: block;
+    width: 100%;
+    padding: 10px;
     background-color: rgb(84, 90, 116);
     color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.show-employee button[type="submit"]:hover {
-    background-color: #333c56;
+#upload_button:hover {
+    background-color: rgb(57, 64, 99)
 }
 
-.show-employee button[type="button"] {
-    background-color: rgba(194, 156, 156, 1);
+#documentdelete {
+    background-color: rgb(228, 153, 104);
     color: white;
+    cursor: pointer;
+    width: 100px;
 }
 
-.show-employee button[type="button"]:hover {
-    background-color: rgb(183 140 140);
+#documentdelete:hover {
+    background-color: rgb(212, 143, 97);
 }

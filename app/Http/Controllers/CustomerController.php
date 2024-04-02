@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use App\Mail\RegisterMail;
+use Illuminate\Support\Facades\Mail;
+use Str;
+
 class CustomerController extends Controller
 {
 
@@ -33,6 +37,7 @@ class CustomerController extends Controller
             'baranggay' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
             'province' => 'nullable|string|max:255',
+    
             'customer_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
     
@@ -47,25 +52,41 @@ class CustomerController extends Controller
         }
     
         // Create the customer record with 'Pending' status
-        $customer = Customer::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'birth_date' => $request->birth_date,
-            'sex' => $request->sex,
-            'phone' => $request->phone,
-            'house_no' => $request->house_no,
-            'street' => $request->street,
-            'baranggay' => $request->baranggay,
-            'city' => $request->city,
-            'province' => $request->province,
-            'customer_image' => $imageName,
-            'status' => 'Pending', // Set the default status to 'Pending'
-        ]);
+        $customer = new Customer;
+        $customer->first_name = $request->first_name;
+        $customer->last_name = $request->last_name;
+        $customer->email = $request->email;
+        $customer->password = Hash::make($request->password);
+        $customer->birth_date = $request->birth_date;
+        $customer->sex = $request->sex;
+        $customer->phone = $request->phone;
+        $customer->house_no = $request->house_no;
+        $customer->street = $request->street;
+        $customer->baranggay = $request->baranggay;
+        $customer->city = $request->city;
+        $customer->province = $request->province;
+        $customer->customer_image = $imageName;
+        $customer->status = 'Pending';
+        //$customer->remember_token = Str::random(40);
+
+        //dd($customer);
+        $customer->save();
+
+
     
-        return redirect()->route('customer.login')->with('success', 'Registration successful. Please log in.');
+        // Send registration email
+        if ($customer && !empty($customer->email) && filter_var($customer->email, FILTER_VALIDATE_EMAIL)) {
+            Mail::to($customer->email)->send(new RegisterMail($customer));
+        } else {
+            // Log error or handle invalid email address
+            return redirect()->route('customer.register')->with('error', 'Invalid email address.');
+        }
+    
+        // Redirect after successful registration
+        return redirect()->route('customer.login')->with('success', 'Registration successful. Please verify your account.');
     }
+    
+    
     
 
     public function showLoginForm()
@@ -96,6 +117,8 @@ class CustomerController extends Controller
         return view('Customers.shop', compact('products'));
     }
 
+
+    
 
     
 }
