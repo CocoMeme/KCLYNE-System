@@ -73,14 +73,18 @@
             <ul class="navmenu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/shop">Shop</a></li>
-                <li><a href="/">Services</a></li>
+                <li><a href="/customer-service">Services</a></li>
                 <li><a href="/">About Us</a></li>
             </ul>
 
             <div class="search">
-                <input type="text" placeholder="Search a Product">
-                <a href="" ><i class='bx bx-search-alt'></i></a>
+                <form action="{{ route('searchProducts') }}" method="GET">
+                    <input type="text" name="query" placeholder="Search a Product" value="{{ request()->input('query') }}">
+                    <button type="submit"><i class='bx bx-search-alt'></i></button>
+                </form>
             </div>
+            
+            
 
             <div class="nav-icon">
                 <a href="">

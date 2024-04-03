@@ -71,10 +71,6 @@ class ProductController extends Controller
             return redirect()->back()->withErrors(['error' => 'Failed to create product. Please check your input.'])->withInput();
         }
     }
-    
-    
-    
-    
 
 
     public function edit($id)
@@ -141,7 +137,25 @@ class ProductController extends Controller
         return redirect()->route('product.management')->with('success', 'Product deleted successfully!');
     }
 
+    // Search 
 
+    public function searchProducts(Request $request)
+    {
+        $searchQuery = $request->input('query');
+
+        // dd($searchQuery);
+    
+        // Perform search query based on $searchQuery
+        // For example, if you have a Product model:
+        if ($searchQuery) {
+            $searchedProducts = Product::where('product_name', 'like', '%'.$searchQuery.'%')->get();
+        } else {
+            $searchedProducts = [];
+        }
+        
+        return view('layouts.home', compact('searchQuery', 'searchedProducts'));
+    }
+    
 
     
 }

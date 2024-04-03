@@ -4,15 +4,16 @@
 
 namespace App\Http\Controllers;
 
+use Str;
 use App\Models\Product;
+use App\Models\Service;
 use App\Models\Customer;
+use App\Mail\RegisterMail;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
-use App\Mail\RegisterMail;
 use Illuminate\Support\Facades\Mail;
-use Str;
 
 class CustomerController extends Controller
 {
@@ -96,7 +97,7 @@ class CustomerController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::guard('customer')->attempt($credentials)) {
             // Authentication successful
-            return redirect()->intended('/'); // Redirect to customer dashboard
+            return redirect()->route('home')->with('success', 'Logged in successfully.');
         }
         // Authentication failed
         return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
@@ -132,6 +133,9 @@ class CustomerController extends Controller
             abort(404);
         }
     }
+
+    // Services
+
 
     
 }
