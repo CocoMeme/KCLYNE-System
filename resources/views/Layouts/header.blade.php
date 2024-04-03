@@ -86,7 +86,6 @@
             </div>
             
             
-
             <div class="nav-icon">
                 <a href="">
                     <i class='bx bx-cart-alt'></i>

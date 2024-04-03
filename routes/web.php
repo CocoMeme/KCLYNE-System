@@ -9,6 +9,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerChartController;
+use App\Http\Controllers\LoginController;
 
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
@@ -165,8 +166,16 @@ use App\Http\Controllers\CustomerChartController;
         // View 
 
             Route::get('/shopInfo/{id}', [ShopController::class, 'show'])->name('shopInfo');
+
         // Cart
             Route::get('/cart', 'CartController@index')->name('cartInfo');
+
+        // Buy Now
+
+        Route::post('/buy-now', [ShopController::class, 'buyNow'])->name('buyNow');
+
+
+
 
 
 
@@ -199,4 +208,4 @@ use App\Http\Controllers\CustomerChartController;
 
         // Verify
 
-            Route::get('/verify/{token}', [CustomerController::class, 'verify'])->name('register');
+            Route::get('/verify/{token}', [CustomerController::class, 'verify']);
