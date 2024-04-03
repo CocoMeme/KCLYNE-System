@@ -19,7 +19,7 @@
                 <div class="products">
                     @foreach($products as $product)
 
-                        <a href="{{ route('home', ['id' => $product->id]) }}">
+                        <a href="{{ route('shopInfo', ['id' => $product->id]) }}">
                             <div class="row">
                                 
                                 @php
@@ -43,10 +43,6 @@
                                 <h3>{{ $product->product_name }}</h3>
 
                                 <div class="product-info">
-
-                                    <div class="form-group">
-                                        <label name="Stat" for="">Supplier Price:</label><p> ₱ {{$product->supplier_price}}</p>
-                                    </div>
 
                                     <div class="form-group">
                                         <label name="Stat" for="">SRP:</label><p> ₱ {{ $product->seller_retail_price }}</p>

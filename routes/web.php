@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerChartController;
+
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
 
@@ -149,7 +151,16 @@ use App\Http\Controllers\CustomerChartController;
             Route::get('/customer-service', [ServiceController::class, 'showCustomerServices'])->name('customer.service');
 
 
-// EMPLOYEES
+
+// SHOP & TRANSACTION FOR CUSTOMER ///////////////////////////////////////////////////////////
+
+        // View 
+
+            Route::get('/shopInfo/{id}', [ShopController::class, 'show'])->name('shopInfo');
+
+
+
+// EMPLOYEES /////////////////////////////////////////////////////////////////////////////////
 
     Route::get('/employee-management', [EmployeeController::class, 'employeeManagement'])->name('employee.management');
 
