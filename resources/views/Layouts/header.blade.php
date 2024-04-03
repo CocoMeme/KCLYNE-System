@@ -31,6 +31,7 @@
     <link href="{{ asset('css/service-managament.css') }}" rel="stylesheet">
     <link href="{{ asset('css/service-display.css') }}" rel="stylesheet">
 
+    
 </head>
 
 <header>

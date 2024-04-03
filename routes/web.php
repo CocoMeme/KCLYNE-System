@@ -157,6 +157,9 @@ use App\Http\Controllers\CustomerChartController;
         // View 
 
             Route::get('/shopInfo/{id}', [ShopController::class, 'show'])->name('shopInfo');
+        // Cart
+            Route::get('/cart', 'CartController@index')->name('cartInfo');
+
 
 
 
