@@ -37,7 +37,6 @@ class CustomerController extends Controller
             'baranggay' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
             'province' => 'nullable|string|max:255',
-    
             'customer_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
     
@@ -67,7 +66,7 @@ class CustomerController extends Controller
         $customer->province = $request->province;
         $customer->customer_image = $imageName;
         $customer->status = 'Pending';
-        //$customer->remember_token = Str::random(40);
+        $customer->remember_token = Str::random(40);
 
         //dd($customer);
         $customer->save();
@@ -85,8 +84,6 @@ class CustomerController extends Controller
         // Redirect after successful registration
         return redirect()->route('customer.login')->with('success', 'Registration successful. Please verify your account.');
     }
-    
-    
     
 
     public function showLoginForm()
@@ -118,7 +115,23 @@ class CustomerController extends Controller
     }
 
 
-    
+    // Verify
+
+    public function verify($token)
+    {
+        $customer = Customer::where('remember_token', '=', $token)->first();
+        if(!empty($customer))
+        {
+            $customer->email_verified_at = date('Y-m-d H:i:s');
+            $customer->save();
+
+            return redirect()->route('customer.login')->with('success', 'Verified successfully');
+        }
+        else
+        {
+            abort(404);
+        }
+    }
 
     
 }

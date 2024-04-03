@@ -172,3 +172,9 @@ use App\Http\Controllers\CustomerChartController;
 
         Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument'])->name('delete-document');
     
+
+// EMAIL VERIFICATION
+
+        // Verify
+
+            Route::get('/verify/{token}', [CustomerController::class, 'verify'])->name('register');

@@ -24,6 +24,7 @@ class CreateCustomersTable extends Migration
             $table->string('province')->nullable();
             $table->string('customer_image')->nullable();
             $table->enum('status', ['Verified', 'Pending']);
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
