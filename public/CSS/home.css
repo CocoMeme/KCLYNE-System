@@ -17,4 +17,5 @@
 .search-products{
     height: 60vh;
     background-color: #eee;
+    display: flex;
 }

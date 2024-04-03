@@ -5,6 +5,8 @@
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to the next row */
     justify-content: center; /* Horizontally center align items */
+    height: 80vh;
+    margin-top: 50px;
 }
 
 .row {

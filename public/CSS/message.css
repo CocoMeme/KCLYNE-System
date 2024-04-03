@@ -13,7 +13,7 @@
     z-index: 9999;
     background: linear-gradient(to right, rgba(194, 156, 156, 1), rgba(232, 113, 33, 0));
 
-    animation: fadeOut 6s ease-in-out forwards;
+    animation: fadeOut 7s ease-in-out forwards;
 }
 
 .success-message-admin {
@@ -29,7 +29,7 @@
     z-index: 9999;
     background: linear-gradient(to right, rgba(194, 156, 156, 1), rgba(232, 113, 33, 0));
 
-    animation: fadeOut 6s ease-in-out forwards;
+    animation: fadeOut 7s ease-in-out forwards;
 }
 
 @keyframes fadeOut {

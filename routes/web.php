@@ -60,7 +60,7 @@ use App\Http\Controllers\CustomerChartController;
         // Create
             Route::post('/employee/create', [EmployeeController::class, 'createEmployee'])->name('employee.create');
 
-        // Read
+        // Read 
 
         Route::get('/fetch-employee-documents/{id}', [EmployeeController::class, 'fetchEmployeeDocuments']);
 
@@ -122,11 +122,9 @@ use App\Http\Controllers\CustomerChartController;
 
 // CUSTOMERS ////////////////////////////////////////////////////////////////
 
-
         Auth::routes([
             'verify' => true
         ]);
-
 
         // Register
             
@@ -142,17 +140,27 @@ use App\Http\Controllers\CustomerChartController;
         
             Route::post('/customer/logout', [CustomerController::class, 'logoutCustomer'])->name('customer.logout.submit');
 
-        // Shop
+        // Search
 
-            Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
+            Route::get('/search', [ProductController::class, 'searchProducts'])->name('searchProducts');
 
-        // Service
+
+
+
+// SERVICES //////////////////////////////////////////////////////////////////////////////////
+
+        // View
 
             Route::get('/customer-service', [ServiceController::class, 'showCustomerServices'])->name('customer.service');
 
 
 
 // SHOP & TRANSACTION FOR CUSTOMER ///////////////////////////////////////////////////////////
+
+
+        // Shop
+
+            Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 
         // View 
 
