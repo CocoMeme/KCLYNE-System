@@ -64,6 +64,26 @@ class ShopController extends Controller
             return back()->with('error', 'Failed to place order. Please try again later.');
         }
     }
+
+
+    public function addToCart(Request $request)
+    {
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        $customerId = Auth::guard('customer')->id();
+
+        // Create a new cart item
+        Cart::create([
+            'customer_id' => $customerId,
+            'product_id' => $productId,
+            'quantity' => $quantity,
+            'cart_date_placed' => now(),
+        ]);
+
+        // Redirect or return response as needed
+        return redirect()->route('cartInfo')->with('success', 'Product added to cart successfully!');
+    }
 }
     
 

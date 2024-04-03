@@ -170,7 +170,7 @@
 									<button type="submit" class="btn add-to-cart">Buy Now</button>
 								</form>
 							
-								<a href="{{ route('cartInfo') }}" class="btn add-to-cart">Add to Cart</a>
+								<a href="{{ route('addToCart', ['product_id' => $product->id, 'quantity' => 1]) }}" class="btn add-to-cart">Add to Cart</a>
 								<div class="wrap-btn"></div>
 							</div>
 						</div>
@@ -212,7 +212,7 @@
 													</div>
 												</li>
 											</ol>
-										</div><!-- #comments -->
+										</div>
 
 										<div id="review_form_wrapper">
 											<div id="review_form">
