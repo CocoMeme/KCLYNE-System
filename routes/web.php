@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CustomerChartController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CartController;
 
 
 // LAYOUTS //////////////////////////////////////////////////////////////////
@@ -168,7 +169,9 @@ use App\Http\Controllers\LoginController;
             Route::get('/shopInfo/{id}', [ShopController::class, 'show'])->name('shopInfo');
 
         // Cart
-            Route::get('/cart', 'CartController@index')->name('cartInfo');
+            Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+
+            Route::get('/cart', [CartController::class, 'index'])->name('cartInfo');
 
         // Buy Now
 

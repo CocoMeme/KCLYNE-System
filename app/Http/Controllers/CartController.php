@@ -16,23 +16,26 @@ class CartController extends Controller
 
     public function index()
     {
-        $cartItems = Cart::where('customer_id', auth('customer')->id())->get();
-        return view('Customers.cart', ['cartItems' => $cartItems]);
+        $cartItems = Cart::with('product')->where('customer_id', auth()->guard('customer')->user()->id)->get();
+        return view('Customers.cart', compact('cartItems'));
     }
 
     public function addToCart(Request $request)
     {
-        // Validate the request data if necessary
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
 
-        // Create a new record in the carts table
+        $customerId = Auth::guard('customer')->id();
+
+        // Create a new cart item
         Cart::create([
-            'product_id' => $request->input('product_id'),
-            'customer_id' => auth('customer')->id(),
-            'quantity' => $request->input('quantity'),
-            // Add other fields here as needed
+            'customer_id' => $customerId,
+            'product_id' => $productId,
+            'quantity' => $quantity,
+            'cart_date_placed' => now(),
         ]);
 
-        // Redirect the user to the cart page or any other page
-        return redirect()->route('cart.index');
-    }
+        // Redirect or return response as needed
+// Redirect or return response as needed
+return redirect()->route('shop')->with('success', 'Cart placed successfully!');    }
 }

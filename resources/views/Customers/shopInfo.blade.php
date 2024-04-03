@@ -170,7 +170,12 @@
 									<button type="submit" class="btn add-to-cart">Buy Now</button>
 								</form>
 							
-								<a href="{{ route('cartInfo') }}" class="btn add-to-cart">Add to Cart</a>
+								<form action="{{ route('addToCart') }}" method="POST">
+									@csrf
+									<input type="hidden" name="product_id" value="{{ $product->id }}">
+									<input type="hidden" name="quantity" id="buy-now-quantity" value="1">
+									<button type="submit" class="btn add-to-cart">Add To Cart</button>
+								</form>
 								<div class="wrap-btn"></div>
 							</div>
 
@@ -318,33 +323,6 @@
 <script src="{{ asset('JavaScript/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('JavaScript/jquery.sticky.js') }}"></script>
 <script src="{{ asset('JavaScript/functions.js') }}"></script>
-
-<script>
-function addToCart(productId, customerId) {
-    // Retrieve the quantity from the input field
-    var quantity = parseInt($('.quantity-input input[name="product-quatity"]').val());
-
-    // Send an AJAX request to the server
-    $.ajax({
-        type: "POST",
-        url: "{{ route('addToCart') }}", // Replace 'addToCart' with the actual route name
-        data: {
-            product_id: productId,
-            customer_id: customerId,
-            quantity: quantity // Include the quantity
-        },
-        success: function(response) {
-            // Handle success response
-            alert('Product added to cart successfully!');
-        },
-        error: function(xhr, status, error) {
-            // Handle error response
-            console.error(error);
-            alert('An error occurred while adding the product to cart.');
-        }
-    });
-}
-</script>
 
 </body>
 </html>
