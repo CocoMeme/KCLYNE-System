@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,93 @@
     <link href="{{ asset('css/chosen.min.css') }}" type="text/css" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('css/color-01.css') }}" type="text/css" rel="stylesheet">
+
+	<link href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="{{ asset('css/header-footer.css') }}" rel="stylesheet">
+
+
+
+
 </head>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#increase-quantity').click(function(e) {
+            e.preventDefault();
+            var quantityInput = $('#product-quantity');
+            var maxQuantity = parseInt(quantityInput.attr('data-max'));
+            var currentQuantity = parseInt(quantityInput.val());
+            if (currentQuantity < maxQuantity) {
+                quantityInput.val(currentQuantity + 1);
+                $('#buy-now-quantity').val(currentQuantity + 1);
+            }
+        });
+
+        $('#decrease-quantity').click(function(e) {
+            e.preventDefault();
+            var quantityInput = $('#product-quantity');
+            var currentQuantity = parseInt(quantityInput.val());
+            if (currentQuantity > 1) {
+                quantityInput.val(currentQuantity - 1);
+                $('#buy-now-quantity').val(currentQuantity - 1);
+            }
+        });
+
+        $('#product-quantity').on('input', function() {
+            var quantity = parseInt($(this).val());
+            if (!isNaN(quantity)) {
+                $('#buy-now-quantity').val(quantity);
+            }
+        });
+    });
+</script>
+
+
+<header>
+	<a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
+
+	<ul class="navmenu">
+		<li><a href="/">Home</a></li>
+		<li><a href="/shop">Shop</a></li>
+		<li><a href="/customer-service">Services</a></li>
+		<li><a href="/">About Us</a></li>
+	</ul>
+
+	<div class="search">
+		<form action="{{ route('searchProducts') }}" method="GET">
+			<input type="text" name="query" placeholder="Search a Product" value="{{ request()->input('query') }}">
+			<button type="submit"><i class='bx bx-search-alt'></i></button>
+		</form>
+	</div>
+
+	<div class="nav-icon">
+		<a href="">
+			<i class='bx bx-cart-alt'></i>
+		</a>
+		<a href="/">
+			<i class='bx bx-bell'></i>
+		</a>
+		<a href="">
+			<i class='bx bxs-user-circle'></i>
+		</a>
+		<div class="logout-button">
+			<form action="{{ route('customer.logout.submit') }}" method="POST">
+				@csrf
+				<a href="{{ route('customer.logout.submit') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+					<i class='bx bx-log-out-circle'></i>
+				</a>
+			</form>
+		</div>
+	</div>
+
+</header>
+
+
 <body class=" detail page ">
 
 	<!--main area-->
@@ -23,12 +111,6 @@
 
 		<div class="container">
 
-			<div class="wrap-breadcrumb">
-				<ul>
-					<li class="item-link"><a href="#" class="link">home</a></li>
-					<li class="item-link"><span>detail</span></li>
-				</ul>
-			</div>
 			<div class="row">
 
 				<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
@@ -50,16 +132,16 @@
 
 						<div class="detail-info">
 							<div class="product-rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star-half' ></i>
                                 <a href="#" class="count-review">(05 review)</a>
                             </div>
 							<h2 class="product_name">{{ $product->product_name }}</h2>
                             <div class="short-desc">
-							<p name="description">{{ $product->description }}</p>
+								<p name="description">{{ $product->description }}</p>
                             </div>
                             <div class="wrap-social">
                             	<a class="link-socail" href="#"><img src="assets/images/social-list.png" alt=""></a>
@@ -70,27 +152,31 @@
 								</span>
 							</div>
                             <div class="stock-info in-stock">
-                                <p class="availability">Availability: <b>In Stock</b></p>
+                                <p class="availability">Availability: <b>{{ $product->stock->product_stock }}</b></p>
                             </div>
                             <div class="quantity">
                             	<span>Quantity:</span>
 								<div class="quantity-input">
-									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" >
-									
-									<a class="btn btn-reduce" href="#"></a>
-									<a class="btn btn-increase" href="#"></a>
+									<input type="text" id="product-quantity" name="product-quantity" value="1" data-max="120" pattern="[0-9]*">
+									<a class="btn btn-reduce" href="#" id="decrease-quantity">-</a>
+									<a class="btn btn-increase" href="#" id="increase-quantity">+</a>
 								</div>
 							</div>
 							<div class="wrap-butons">
-								<a href="#" class="btn buy-now">Buy Now</a>
-								<a href="#" class="btn add-to-cart" onclick="addToCart({{ $product->id }}, {{ auth()->guard('customer')->user()->id }})">Add to Cart</a>
-								<div class="wrap-btn">
-									<a href="#" class="btn btn-compare">Add Compare</a>
-									<a href="#" class="btn btn-wishlist">Add Wishlist</a>
-								</div>
+								<form action="{{ route('buyNow') }}" method="POST">
+									@csrf
+									<input type="hidden" name="product_id" value="{{ $product->id }}">
+									<input type="hidden" name="quantity" id="buy-now-quantity" value="1">
+									<button type="submit" class="btn add-to-cart">Buy Now</button>
+								</form>
+							
+								<a href="{{ route('cartInfo') }}" class="btn add-to-cart">Add to Cart</a>
+								<div class="wrap-btn"></div>
 							</div>
 
 						</div>
+
+
 						<div class="advance-info">
 							<div class="tab-control normal">
 								<a href="#description" class="tab-control-item active">description</a>
@@ -189,7 +275,7 @@
 
 								<li class="service">
 									<a class="link-to-service" href="#">
-										<i class="fa fa-truck" aria-hidden="true"></i>
+										<i class='bx bxs-package' ></i>
 										<div class="right-content">
 											<b class="title">Free Shipping</b>
 											<span class="subtitle">On Oder Over $99</span>
@@ -200,7 +286,7 @@
 
 								<li class="service">
 									<a class="link-to-service" href="#">
-										<i class="fa fa-gift" aria-hidden="true"></i>
+										<i class='bx bxs-gift' ></i>
 										<div class="right-content">
 											<b class="title">Special Offer</b>
 											<span class="subtitle">Get a gift!</span>
@@ -211,7 +297,7 @@
 
 								<li class="service">
 									<a class="link-to-service" href="#">
-										<i class="fa fa-reply" aria-hidden="true"></i>
+										<i class='bx bxs-chevrons-left'></i>
 										<div class="right-content">
 											<b class="title">Order Return</b>
 											<span class="subtitle">Return within 7 days</span>

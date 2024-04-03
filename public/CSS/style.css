@@ -47,7 +47,9 @@ Primary use:    Ecommerce
 	Effects Style 6 : .banner-effect-toright;
 
 -------------------------------------------------------------------*/
-
+main#main.main-site{
+    margin-top: 110px;
+}
 
 
 body{
@@ -6370,7 +6372,8 @@ background-color: #888888;
         display: none;
     }
     .header-toggle + .main-site .slide-banners.slide-banner-first{
-        padding-top: 30px ;
+        padding-top: 70px ;
+        margin-top: 50px;
     }
     .wrap-main-slide-2.slide-fit-menu .slide-carousel{
         max-width: 100%;
