@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Customer;
-
-use App\Models\Order;
-use App\Models\OrderLine;
-use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Customer;
+use App\Models\OrderLine;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ShopController extends Controller
@@ -85,6 +84,56 @@ class ShopController extends Controller
         // Redirect or return response as needed
         return redirect()->route('cartInfo')->with('success', 'Product added to cart successfully!');
     }
+
+
+
+public function checkout(Request $request)
+{
+    // Retrieve the current logged-in customer ID
+    $customerId = auth()->guard('customer')->id();
+
+    // Retrieve cart items for the current customer
+    $cartItems = Cart::where('customer_id', $customerId)->get();
+
+    // Start a database transaction
+    \DB::beginTransaction();
+
+    try {
+        // Create a new order record
+        $order = new Order();
+        $order->customer_id = $customerId;
+        $order->order_date_placed = now(); // or any other date/time format
+        $order->status = 'pending'; // or any other status
+        $order->save();
+
+        // Process each cart item
+        foreach ($cartItems as $cartItem) {
+            // Create a new order line record
+            $orderLine = new OrderLine();
+            $orderLine->order_info_id = $order->id;
+            $orderLine->product_id = $cartItem->product_id;
+            $orderLine->quantity = $cartItem->quantity;
+            $orderLine->save();
+
+            // Delete the cart item
+            $cartItem->delete();
+        }
+
+        // Commit the transaction
+        \DB::commit();
+
+        // Redirect the user to a success page or any other appropriate action
+        return redirect()->route('shop')->with('success', 'Order placed successfully!');
+    } catch (\Exception $e) {
+        // Rollback the transaction in case of any error
+        \DB::rollback();
+        
+        // Redirect the user to an error page or any other appropriate action
+        return redirect()->route('cartInfo')->with('error', 'Failed to place order. Please try again later.');
+    }
+}
+
+
 }
     
 

@@ -4096,11 +4096,13 @@ article.single-post blockquote p:last-child::after{
 .shopping-cart .summary{
     display: inline-block;
     background-color: #fdfdfd;
-    width: 100%;
+    width: 1170px;
     border: 1px solid #e6e6e6;
     padding: 25px 40px 21px 40px;
     display: table;
+    margin: auto;
     margin-top: 20px;
+
 }
 .shopping-cart .summary .order-summary{
     width: 371px;
@@ -4444,6 +4446,7 @@ article.single-post blockquote p:last-child::after{
     border-radius: 0;
     padding: 4.5px 10px;
     text-align: center;
+    width: 100%;
 }
 .wrap-product-detail .detail-info .wrap-butons .add-to-cart:hover{
     color: #fff;
