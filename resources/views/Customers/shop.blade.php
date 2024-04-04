@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    @auth('customer') 
+    {{-- @auth('customer')  --}}
         <section class="product-shop">
             
             {{-- PRODUTC DISPLAY --}}
@@ -62,9 +62,9 @@
             </div>
         </section>
 
-    @else  
+    {{-- @else  
 
-    @endauth
+    @endauth --}}
 
 </body>
 </html>

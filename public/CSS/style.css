@@ -4446,6 +4446,7 @@ article.single-post blockquote p:last-child::after{
     border-radius: 0;
     padding: 4.5px 10px;
     text-align: center;
+    width: 100%;
 }
 .wrap-product-detail .detail-info .wrap-butons .add-to-cart:hover{
     color: #fff;

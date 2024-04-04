@@ -50,10 +50,6 @@
                     <li><a href="/product-management"><i class='bx bxs-grid' ></i><span>Product Management</span></a></li>
                     <li><a href="/employee-management"><i class='bx bxs-user-badge'></i> <span>Employee Management</span></a></li>
                     <li><a href="/service-management"><i class='bx bx-wrench'></i><span>Service Management</span></a></li>
-                    <li><a href="/"><i class='bx bx-user'></i> <span>Customer Management</span></a></li>
-                    <li><a href="/"><i class='bx bx-wallet'></i> <span>Payroll</span></a></li>
-                    <li><a href="/"><i class='bx bx-book'></i> <span>Order History</span></a></li>
-                    <li><a href="/"><i class='bx bx-bar-chart'></i> <span>N/A</span></a></li>
                 </ul>
             </div>
 
@@ -81,7 +77,7 @@
             <div class="search">
                 <form action="{{ route('searchProducts') }}" method="GET">
                     <input type="text" name="query" placeholder="Search a Product" value="{{ request()->input('query') }}">
-                    <button type="submit"><i class='bx bx-search-alt'></i></button>
+                    <button type="submit" style="background-color: rgb(74, 83, 118); border: none"><i class='bx bx-search-alt'></i></button>
                 </form>
             </div>
             
@@ -111,14 +107,15 @@
             <a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
             <ul class="navmenu">
                 <li><a href="/">Home</a></li>
-                <li><a href="/">Shop</a></li>
+                <li><a href="/shop">Shop</a></li>
                 <li><a href="/">About Us</a></li>
-                <li><a href="/admin/login">Administration</a></li>
             </ul>
 
             <div class="search">
-                <input type="text" placeholder="Search a Product">
-                <a href="" ><i class='bx bx-search-alt'></i></a>
+                <form action="{{ route('searchProducts') }}" method="GET">
+                    <input type="text" name="query" placeholder="Search a Product" value="{{ request()->input('query') }}">
+                    <button type="submit" style="background-color: rgb(74, 83, 118); border: none"><i class='bx bx-search-alt'></i></button>
+                </form>
             </div>
 
             <div class="nav-icon">
