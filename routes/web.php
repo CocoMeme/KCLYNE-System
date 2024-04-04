@@ -175,7 +175,12 @@ use App\Http\Controllers\CartController;
 
         // Buy Now
 
-        Route::post('/buy-now', [ShopController::class, 'buyNow'])->name('buyNow');
+            Route::post('/buy-now', [ShopController::class, 'buyNow'])->name('buyNow');
+
+        // Add to Cart
+
+            Route::post('/add-to-cart', [ShopController::class, 'addToCart'])->name('addToCart');
+
 
 
 

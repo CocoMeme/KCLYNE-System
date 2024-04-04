@@ -218,7 +218,7 @@
 													</div>
 												</li>
 											</ol>
-										</div><!-- #comments -->
+										</div>
 
 										<div id="review_form_wrapper">
 											<div id="review_form">
