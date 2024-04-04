@@ -47,6 +47,10 @@ use App\Http\Controllers\CartController;
 
         Route::post('/admin/logout', [AdminController::class, 'logoutAdmin'])->name('admin.logout.submit');
 
+    // Dashboard
+
+        Route::get('/dashboard', [CustomerChartController:: class, 'Charts'])->name('admin.dashboard');
+
     
     //  PRODUCTS RELATED ADMIN
 
@@ -82,6 +86,8 @@ use App\Http\Controllers\CartController;
             Route::delete('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
 
         // Update
+        Route::post('/upload-documents/{employee_id}', [EmployeeController::class, 'uploadDocuments'])->name('upload-documents');
+        Route::put('/delete-document/{employee_id}/{document_id}', [EmployeeController::class, 'destroyDocument']);
 
             // Route for displaying the product update form
             Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
@@ -169,7 +175,7 @@ use App\Http\Controllers\CartController;
             Route::get('/shopInfo/{id}', [ShopController::class, 'show'])->name('shopInfo');
 
         // Cart
-            Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+            // Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
 
             Route::get('/cart', [CartController::class, 'index'])->name('cartInfo');
 

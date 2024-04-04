@@ -139,9 +139,17 @@
     <form action="{{ route('upload-documents', ['employee_id' => $employee->id]) }}" method="POST" enctype="multipart/form-data" id="upload-form">    
         @csrf
         <div id="document-inputs">
-        <div class="documentgroup">
+        <div class="group">
                     <label for="document_type">Document Type:</label>
-                    <input type="text" name="document_type" id="document_type">
+                    <select name="document_type" id="document_type">
+                        <option value="">Select ID Type</option>
+                        <option value="SSS">SSS</option>
+                        <option value="Pag-Ibig">Pag-Ibig</option>
+                        <option value="PHILSys ID">PHILSys ID</option>
+                        <option value="Passport">Passport</option>
+                        <option value="UMID">UMID</option>
+                        <option value="Driver's License">Driver's License</option>
+                    </select>
                 </div>
                 @error('document_type')
                     <span class="error">{{ $message }}</span>

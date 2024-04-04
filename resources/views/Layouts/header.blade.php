@@ -46,7 +46,7 @@
 
             <div class="menu-items">
                 <ul>
-                    <li><a href="/"><i class='bx bx-home'></i> <span>Dashboard</span></a></li>
+                    <li><a href="/dashboard"><i class='bx bx-home'></i> <span>Dashboard</span></a></li>
                     <li><a href="/product-management"><i class='bx bxs-grid' ></i><span>Product Management</span></a></li>
                     <li><a href="/employee-management"><i class='bx bxs-user-badge'></i> <span>Employee Management</span></a></li>
                     <li><a href="/service-management"><i class='bx bx-wrench'></i><span>Service Management</span></a></li>

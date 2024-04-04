@@ -2,89 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\OrderLine;
+use App\Models\Stock;
+use App\Models\EmployeeDocument;
 use Illuminate\Http\Request;
 
 class CustomerChartController extends Controller
 {
-
-public function BarChart(){
-    $users = Customer:: selectRaw('MONTH(created_at) as month, COUNT(*) as count')
-            ->whereYear('created_at', date('Y'))
-            ->groupBy('month')
-            ->orderBy('month')
+    public function charts()
+    {
+        $orderLines = OrderLine::join('products', 'order_lines.product_id', '=', 'products.id')
+            ->select('products.product_name', \DB::raw('COUNT(*) as count'))
+            ->groupBy('products.product_name')
+            ->orderBy('count', 'desc')
             ->get();
 
-    $labels = []; 
-    $data = [];
-    $colors =['#FF6384', '#36A2EB', '#FFCE56', '#8BC34A', '#ff5722', '#009688', '#795548', '#9C27B0', '#2196F3', '#FF9800', '#CDDC39', '#607D88'];
+        $orderLabels = $orderLines->pluck('product_name');
+        $orderData = $orderLines->pluck('count');
 
-    for ($i = 1; $i < 13; $i++) {
-        $month = date('F', mktime(0, 0, 0, $i, 1));
-        $count = 0;
-      
-        foreach ($users as $user) {
-          if ($user->month == $i) {
-            $count = $user->count;
-            break;
-          }
-        }
-        array_push($labels, $month);
-        // Format count to display only the integer part (no decimals)
-        array_push($data, number_format($count, 0, '', '')); 
-      }
-      
-      
+        $stocks = Stock::join('products', 'stocks.product_id', '=', 'products.id')
+            ->select('products.product_name', 'stocks.product_stock')
+            ->orderBy('stocks.created_at')
+            ->get();
 
-    $datasets = [
-        [
-            'label' => 'Customers',
-            'data' => $data,
-            'backgroundColor' => $colors
-        ]
-        ];
+        $stockLabels = $stocks->pluck('product_name');
+        $stockData = $stocks->pluck('product_stock');
 
-        return view('Charts.barChart', compact('datasets', 'labels'));
-}
+        $employeeDocuments = EmployeeDocument::select('document_type', \DB::raw('COUNT(*) as count'))
+            ->groupBy('document_type')
+            ->orderBy('count', 'desc')
+            ->get();
 
-    public function pieChart(){
-        $users = Customer::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
-        ->whereYear('created_at', date('Y'))
-        ->groupBy('month')
-        ->orderBy('month')
-        ->get();
+        $documentLabels = $employeeDocuments->pluck('document_type');
+        $documentData = $employeeDocuments->pluck('count');
 
-            $labels = []; 
-            $data = [];
-            $colors = [
-            '#FF6384', '#36A2EB', '#FFCE56', '#8BC34A', '#ff5722', 
-            '#009688', '#795548', '#9C27B0', '#2196F3', '#FF9800', 
-            '#CDDC39', '#607D88'
-            ];
-
-            for ($i = 1; $i < 13; $i++) {
-            $month = date('F', mktime(0, 0, 0, $i, 1));
-            $count = 0;
-
-            foreach ($users as $user) {
-            if ($user->month == $i) {
-            $count = $user->count;
-            break;
-            }
-            }
-            array_push($labels, $month);
-            // Format count to display only the integer part (no decimals)
-            array_push($data, number_format($count, 0, '', '')); 
-            }
-
-            $datasets = [
-            [
-            'label' => 'Customers by Month',
-            'data' => $data,
-            'backgroundColor' => $colors
-            ]
-            ];
-
-            return view('Charts.pieChart', compact('datasets', 'labels'));
-            }
+        return view('Admins.dashboard', compact('orderLabels', 'orderData', 'stockLabels', 'stockData', 'documentLabels', 'documentData'));
+    }
 }

@@ -10,6 +10,7 @@
   <h1 style="text-align: center; color: red;">Pie Chart In Laravel</h1>
   <div style="width: 900px; margin:auto;"> <canvas id="chart"></canvas>
   </div>
+  
   <script>
     var ctx = document.getElementById('chart').getContext('2d');
     var userChart = new Chart(ctx, {
@@ -20,5 +21,6 @@
       }
     });
   </script>
+  
 </body>
 </html>

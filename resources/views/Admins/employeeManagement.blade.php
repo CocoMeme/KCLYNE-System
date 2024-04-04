@@ -130,11 +130,20 @@
 
                 <div class="group">
                     <label for="document_type">Document Type:</label>
-                    <input type="text" name="document_type" id="document_type">
+                    <select name="document_type" id="document_type">
+                        <option value="">Select ID Type</option>
+                        <option value="SSS">SSS</option>
+                        <option value="Pag-Ibig">Pag-Ibig</option>
+                        <option value="PHILSys ID">PHILSys ID</option>
+                        <option value="Passport">Passport</option>
+                        <option value="UMID">UMID</option>
+                        <option value="Driver's License">Driver's License</option>
+                    </select>
                 </div>
                 @error('document_type')
                     <span class="error">{{ $message }}</span>
                 @enderror
+
 
                 <div class="group">
                     <label for="files">Select Documents:</label>
@@ -211,13 +220,8 @@
 
 document.querySelectorAll('.edit-employee').forEach(button => {
         button.addEventListener('click', function() {
-            // Get the employee ID associated with the clicked edit button
             const employeeId = this.getAttribute('data-id');
-
-            // Construct the URL to the edit page with the employee ID as a parameter
             const editUrl = "{{ route('employee.edit', ':id') }}".replace(':id', employeeId);
-
-            // Redirect the user to the edit page
             window.location.href = editUrl;
         });
     });
