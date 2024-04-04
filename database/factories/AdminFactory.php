@@ -1,6 +1,6 @@
 <?php
 
-// database/factories/AdminFactory.php
+namespace Database\Factories;
 
 use App\Models\Admin;
 use Illuminate\Support\Str;
