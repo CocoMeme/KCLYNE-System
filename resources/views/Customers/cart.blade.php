@@ -98,10 +98,56 @@
 </script>
 
 
+<header>
+
+    @if(session('success'))
+        <div class="success-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
+
+    <ul class="navmenu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/customer-service">Services</a></li>
+        <li><a href="/">About Us</a></li>
+    </ul>
+
+    <div class="search">
+        <form action="{{ route('searchProducts') }}" method="GET">
+            <input type="text" name="query" placeholder="Search a Product" value="{{ request()->input('query') }}">
+            <button type="submit"><i class='bx bx-search-alt'></i></button>
+        </form>
+    </div>
+
+    <div class="nav-icon">
+        <a href="/cart">
+            <i class='bx bx-cart-alt'></i>
+        </a>
+        <a href="/">
+            <i class='bx bx-bell'></i>
+        </a>
+        <a href="">
+            <i class='bx bxs-user-circle'></i>
+        </a>
+        <div class="logout-button">
+            <form action="{{ route('customer.logout.submit') }}" method="POST">
+                @csrf
+                <a href="{{ route('customer.logout.submit') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <i class='bx bx-log-out-circle'></i>
+                </a>
+            </form>
+        </div>
+    </div>
+
+</header>
 
 
 
-<body class=" shopping-cart page ">
+
+<body class=" shopping-cart page " style="margin-top: 100px">
 
 	<!-- mobile menu -->
     <div class="mercado-clone-wrap">
@@ -201,7 +247,7 @@
     <script src="{{ asset('JavaScript/functions.js') }}"></script>
 
 
+    @extends('layouts/footer')
 
-	<!--footer area-->
 </body>
 </html>

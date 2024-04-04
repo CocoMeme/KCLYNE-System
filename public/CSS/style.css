@@ -4102,7 +4102,7 @@ article.single-post blockquote p:last-child::after{
     display: table;
     margin: auto;
     margin-top: 20px;
-
+    margin-bottom: 50px;
 }
 .shopping-cart .summary .order-summary{
     width: 371px;

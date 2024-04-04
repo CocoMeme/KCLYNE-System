@@ -65,6 +65,12 @@
 
 	<header>
 
+		@if(session('success'))
+        <div class="success-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
 		<a href="/" class="logo"><img src="/Images/Layouts/KCLYNE-Logo.png" alt=""></a>
 
 		<ul class="navmenu">

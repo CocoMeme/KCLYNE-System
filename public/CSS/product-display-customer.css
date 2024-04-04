@@ -54,6 +54,7 @@
     flex: 1; /* Fill remaining space in the parent container */
     margin-bottom: 5px;
     height: 130;
+    color: black;
 }
 
 .product-shop .product-info p{

@@ -82,7 +82,7 @@ class ShopController extends Controller
         ]);
 
         // Redirect or return response as needed
-        return redirect()->route('cartInfo')->with('success', 'Product added to cart successfully!');
+        return redirect()->route('shop')->with('success', 'Product added to cart successfully!');
     }
 
 

@@ -4,7 +4,7 @@
 <body>
 
     @if(session('success'))
-        <div class="success-message-admin">
+        <div class="success-message">
             {{ session('success') }}
         </div>
     @endif
