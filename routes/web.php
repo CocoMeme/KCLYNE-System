@@ -169,7 +169,7 @@ use App\Http\Controllers\CartController;
             Route::get('/shopInfo/{id}', [ShopController::class, 'show'])->name('shopInfo');
 
         // Cart
-            Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
+            //Route::post('/addToCart', [CartController::class, 'addToCart'])->name('addToCart');
 
             Route::get('/cart', [CartController::class, 'index'])->name('cartInfo');
 
@@ -181,7 +181,9 @@ use App\Http\Controllers\CartController;
 
             Route::post('/add-to-cart', [ShopController::class, 'addToCart'])->name('addToCart');
 
+        // Checkout 
 
+            Route::post('/checkout', [ShopController::class, 'checkout'])->name('checkout');
 
 
 
